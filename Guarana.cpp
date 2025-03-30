@@ -14,7 +14,7 @@ std::string Guarana::nazwa() const {
 }
 
 void Guarana::kolizja(Organizm* inny) {
-    inny->zwiekszSile(3);  // bonus!
+    inny->setSila(inny->getSila() + 3);  // bonus +3 do si³y
     std::string atakujacy = inny->nazwa();
     std::string ja = nazwa();
     swiat->usunOrganizm(this);
