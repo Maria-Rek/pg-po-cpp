@@ -2,7 +2,9 @@
 #include <iostream>
 #include <algorithm>
 #include <typeinfo>
-#include "Wilk.h"  // tymczasowo, póŸniej dodasz inne organizmy
+#include "Wilk.h"
+#include "Owca.h"
+#include "Lis.h"
 
 Swiat::Swiat(int szerokosc, int wysokosc)
     : szerokosc(szerokosc), wysokosc(wysokosc), tura(1) {
@@ -94,11 +96,16 @@ std::vector<Punkt> Swiat::getWolnePolaObok(const Punkt& p) const {
     return wolne;
 }
 
-void Swiat::stworzOrganizm(const std::type_info& typ, const Punkt& p) {
+void Swiat::stworzOrganizm(const type_info& typ, const Punkt& p) {
     if (typ == typeid(Wilk)) {
         organizmy.push_back(new Wilk(this, p));
     }
-    // Dodasz tu inne typy organizmów w przysz³oœci
+    else if (typ == typeid(Owca)) {
+        organizmy.push_back(new Owca(this, p));
+    }
+    else if (typ == typeid(Lis)) {
+        organizmy.push_back(new Lis(this, p));
+    }
 }
 
 void Swiat::dodajOrganizm(Organizm* org) {
