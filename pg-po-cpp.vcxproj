@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Antylopa.cpp" />
     <ClCompile Include="Lis.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Organizm.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="Zwierze.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Antylopa.h" />
     <ClInclude Include="Lis.h" />
     <ClInclude Include="Organizm.h" />
     <ClInclude Include="Owca.h" />

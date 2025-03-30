@@ -32,7 +32,7 @@ public:
     vector<Punkt> getSasiedniePola(const Punkt& p) const;
     vector<Punkt> getWolnePolaObok(const Punkt& p) const;
 
-    void stworzOrganizm(const type_info& typ, const Punkt& p);  // poprawione!
+    void stworzOrganizm(const type_info& typ, const Punkt& p);
     void dodajOrganizm(Organizm* org);
     void usunOrganizm(Organizm* org);
 
@@ -40,4 +40,5 @@ public:
 
     int getSzerokosc() const;
     int getWysokosc() const;
+    int getTura() const; 
 };

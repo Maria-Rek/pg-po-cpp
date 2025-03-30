@@ -5,6 +5,7 @@
 #include "Wilk.h"
 #include "Owca.h"
 #include "Lis.h"
+#include "Zolw.h"
 
 Swiat::Swiat(int szerokosc, int wysokosc)
     : szerokosc(szerokosc), wysokosc(wysokosc), tura(1) {
@@ -106,6 +107,9 @@ void Swiat::stworzOrganizm(const type_info& typ, const Punkt& p) {
     else if (typ == typeid(Lis)) {
         organizmy.push_back(new Lis(this, p));
     }
+    else if (typ == typeid(Zolw)) {
+        organizmy.push_back(new Zolw(this, p));
+    }
 }
 
 void Swiat::dodajOrganizm(Organizm* org) {
@@ -126,3 +130,4 @@ void Swiat::dodajLog(const std::string& tekst) {
 
 int Swiat::getSzerokosc() const { return szerokosc; }
 int Swiat::getWysokosc() const { return wysokosc; }
+int Swiat::getTura() const { return tura; }

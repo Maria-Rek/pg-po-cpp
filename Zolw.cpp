@@ -1,5 +1,6 @@
 #include "Zolw.h"
 #include "Swiat.h"
+#include <cstdlib>
 
 Zolw::Zolw(Swiat* swiat, Punkt polozenie)
     : Zwierze(swiat, polozenie, 2, 1), ostatniRuch(0) {
@@ -39,12 +40,16 @@ void Zolw::kolizja(Organizm* inny) {
 
     // normalna walka
     if (inny->getSila() >= sila) {
+        std::string mojNazwa = nazwa();             //  zapisz nazwê przed usuniêciem
+        std::string jegoNazwa = inny->nazwa();
         swiat->usunOrganizm(this);
-        swiat->dodajLog(nazwa() + " zosta³ zabity przez " + inny->nazwa());
+        swiat->dodajLog(mojNazwa + " zosta³ zabity przez " + jegoNazwa);
     }
     else {
+        std::string jegoNazwa = inny->nazwa();       // zapisz nazwê przed usuniêciem
+        Punkt jegoPozycja = inny->getPolozenie();
         swiat->usunOrganizm(inny);
-        polozenie = inny->getPolozenie();
-        swiat->dodajLog(nazwa() + " zabi³ " + inny->nazwa());
+        polozenie = jegoPozycja;
+        swiat->dodajLog(nazwa() + " zabi³ " + jegoNazwa);
     }
 }

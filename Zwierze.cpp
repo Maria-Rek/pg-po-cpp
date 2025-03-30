@@ -1,7 +1,6 @@
-#include "Zwierze.h"
+﻿#include "Zwierze.h"
 #include "Swiat.h"
 #include <cstdlib>
-#include <ctime>
 #include <typeinfo>
 
 Zwierze::Zwierze(Swiat* swiat, Punkt polozenie, int sila, int inicjatywa)
@@ -17,6 +16,7 @@ void Zwierze::akcja() {
 
         if (cel != nullptr) {
             kolizja(cel);
+            return;  // Zabezpieczenie: jeśli umrę w kolizji, nie kontynuuj
         }
         else {
             polozenie = nowaPozycja;
@@ -32,19 +32,21 @@ void Zwierze::kolizja(Organizm* inny) {
         if (!wolne.empty()) {
             Punkt dzieckoPozycja = wolne[rand() % wolne.size()];
             swiat->stworzOrganizm(typeid(*this), dzieckoPozycja);
-            swiat->dodajLog(nazwa() + " rozmno�y� si�");
+            swiat->dodajLog(nazwa() + " rozmnożył się");
         }
         return;
     }
 
-    // Walka � wygrywa silniejszy
     if (inny->getSila() <= sila) {
-        swiat->usunOrganizm(inny);
-        polozenie = inny->getPolozenie();
-        swiat->dodajLog(nazwa() + " zabi� " + inny->nazwa());
+        Punkt jegoPozycja = inny->getPolozenie();     // 💖 zapisz pozycję
+        std::string jegoNazwa = inny->nazwa();        // 💖 zapisz nazwę
+        swiat->usunOrganizm(inny);                    // usuń dopiero po zapisie
+        polozenie = jegoPozycja;
+        swiat->dodajLog(nazwa() + " zabił " + jegoNazwa);
     }
     else {
-        swiat->usunOrganizm(this);
-        swiat->dodajLog(nazwa() + " zosta� zabity przez " + inny->nazwa());
+        std::string mojNazwa = nazwa();               // 💖 zapisz swoją nazwę
+        swiat->usunOrganizm(this);                    // usuń siebie
+        swiat->dodajLog(mojNazwa + " został zabity przez " + inny->nazwa());
     }
 }

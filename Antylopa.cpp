@@ -1,0 +1,57 @@
+#include "Antylopa.h"
+#include "Swiat.h"
+#include <cstdlib>
+
+Antylopa::Antylopa(Swiat* swiat, Punkt polozenie)
+    : Zwierze(swiat, polozenie, 4, 4) {
+}
+
+char Antylopa::rysowanie() const {
+    return 'A';
+}
+
+std::string Antylopa::nazwa() const {
+    return "Antylopa";
+}
+
+void Antylopa::akcja() {
+    std::vector<Punkt> sasiednie = swiat->getSasiedniePola(polozenie);
+    std::vector<Punkt> dalsze;
+
+    // Spróbuj pójœæ o 2 pola w jednym kierunku
+    for (const Punkt& p : sasiednie) {
+        int dx = p.x - polozenie.x;
+        int dy = p.y - polozenie.y;
+        Punkt dalej(p.x + dx, p.y + dy);
+
+        if (dalej.x >= 0 && dalej.x < swiat->getSzerokosc() &&
+            dalej.y >= 0 && dalej.y < swiat->getWysokosc()) {
+            dalsze.push_back(dalej);
+        }
+    }
+
+    if (!dalsze.empty()) {
+        Punkt cel = dalsze[rand() % dalsze.size()];
+        Organizm* o = swiat->getOrganizmNa(cel);
+        if (o)
+            kolizja(o);
+        else
+            polozenie = cel;
+    }
+
+    zwiekszWiek();
+}
+
+void Antylopa::kolizja(Organizm* inny) {
+    if (rand() % 2 == 0) {
+        std::vector<Punkt> wolne = swiat->getWolnePolaObok(polozenie);
+        if (!wolne.empty()) {
+            Punkt ucieczka = wolne[rand() % wolne.size()];
+            polozenie = ucieczka;
+            swiat->dodajLog(nazwa() + " uciek³a przed " + inny->nazwa());
+            return;
+        }
+    }
+
+    Zwierze::kolizja(inny);  // normalna walka
+}
