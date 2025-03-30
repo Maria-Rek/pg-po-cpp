@@ -8,6 +8,8 @@ Roslina::Roslina(Swiat* swiat, Punkt polozenie, int sila)
 }
 
 void Roslina::akcja() {
+    if (!swiat) return;
+
     if (rand() % 10 == 0) { // 10% szansy
         std::vector<Punkt> wolne = swiat->getWolnePolaObok(polozenie);
         if (!wolne.empty()) {
@@ -21,8 +23,11 @@ void Roslina::akcja() {
 }
 
 void Roslina::kolizja(Organizm* inny) {
+    if (!swiat || !inny) return;
+
     std::string nazwaRosliny = nazwa();
     std::string nazwaAtakujacego = inny->nazwa();
-    swiat->usunOrganizm(this);
+
     swiat->dodajLog(nazwaRosliny + " zosta³o zjedzone przez " + nazwaAtakujacego);
+    swiat->usunOrganizm(this);
 }

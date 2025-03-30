@@ -22,7 +22,7 @@ int Organizm::getWiek() const {
 }
 
 void Organizm::zwiekszWiek() {
-    wiek++;
+    ++wiek;
 }
 
 Punkt Organizm::getPolozenie() const {

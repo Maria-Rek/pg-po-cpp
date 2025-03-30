@@ -1,24 +1,34 @@
-//#include "WilczeJagody.h"
-//#include "Swiat.h"
-//
-//WilczeJagody::WilczeJagody(Swiat* swiat, Punkt polozenie)
-//    : Roslina(swiat, polozenie, 99) {  // 99 si³y tylko po to, ¿eby nikt ich nie zjada³ "zwyczajnie"
-//}
-//
-//char WilczeJagody::rysowanie() const {
-//    return 'J';
-//}
-//
-//std::string WilczeJagody::nazwa() const {
-//    return "WilczeJagody";
-//}
-//
-//void WilczeJagody::kolizja(Organizm* inny) {
-//    std::string atakujacy = inny->nazwa();
-//    std::string ja = nazwa();
-//
-//    swiat->usunOrganizm(inny);  // zjadaj¹cy ginie
-//    swiat->usunOrganizm(this);  // jagody te¿ zostaj¹ zniszczone
-//
-//    swiat->dodajLog(atakujacy + " zjad³ " + ja + " i zgin¹³");
-//}
+#include "WilczeJagody.h"
+#include "Swiat.h"
+
+WilczeJagody::WilczeJagody(Swiat* swiat, Punkt polozenie)
+    : Roslina(swiat, polozenie, 99) {
+}
+
+char WilczeJagody::rysowanie() const {
+    return 'J';
+}
+
+std::string WilczeJagody::nazwa() const {
+    return "Wilcze Jagody";
+}
+
+void WilczeJagody::kolizja(Organizm* inny) {
+    if (!swiat || !inny) return;
+
+    // Zabezpieczenie: czy ten organizm nadal ¿yje
+    if (swiat->getOrganizmNa(inny->getPolozenie()) != inny)
+        return;
+
+    std::string atakujacy = inny->nazwa();
+    std::string jagody = nazwa();
+
+    swiat->dodajLog(atakujacy + " zjad³ " + jagody + " i zgin¹³!");
+
+    swiat->usunOrganizm(inny);  // atakuj¹cy ginie
+
+    // Czy jagody nadal istniej¹ – sprawdŸ po w³asnym po³o¿eniu
+    if (swiat->getOrganizmNa(polozenie) == this) {
+        swiat->usunOrganizm(this);
+    }
+}

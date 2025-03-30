@@ -28,13 +28,15 @@ int main() {
     swiat.dodajOrganizm(new Trawa(&swiat, Punkt(5, 1)));
     swiat.dodajOrganizm(new Guarana(&swiat, Punkt(4, 5)));
     swiat.dodajOrganizm(new Mlecz(&swiat, Punkt(5, 5)));
-    //swiat.dodajOrganizm(new WilczeJagody(&swiat, Punkt(6, 5))); 
+    swiat.dodajOrganizm(new WilczeJagody(&swiat, Punkt(6, 6)));
 
     // Symulacja: 10 tur
     for (int i = 0; i < 10; ++i) {
         swiat.rysujSwiat();
         swiat.wykonajTure();
         std::cout << "\nNaciśnij Enter, aby przejść do następnej tury...";
+
+
         std::cin.get();
     }
 

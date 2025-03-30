@@ -15,6 +15,8 @@ std::string Lis::nazwa() const {
 }
 
 void Lis::akcja() {
+    if (!swiat) return;
+
     std::vector<Punkt> sasiednie = swiat->getSasiedniePola(polozenie);
     std::vector<Punkt> bezpieczne;
 
@@ -28,10 +30,12 @@ void Lis::akcja() {
     if (!bezpieczne.empty()) {
         Punkt nowaPozycja = bezpieczne[rand() % bezpieczne.size()];
         Organizm* cel = swiat->getOrganizmNa(nowaPozycja);
-        if (cel != nullptr)
+        if (cel != nullptr) {
             kolizja(cel);
-        else
+        }
+        else {
             polozenie = nowaPozycja;
+        }
     }
 
     zwiekszWiek();

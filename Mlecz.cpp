@@ -1,6 +1,7 @@
 #include "Mlecz.h"
 #include "Swiat.h"
 #include <cstdlib>
+#include <typeinfo>
 
 Mlecz::Mlecz(Swiat* swiat, Punkt polozenie)
     : Roslina(swiat, polozenie, 0) {
@@ -15,6 +16,8 @@ std::string Mlecz::nazwa() const {
 }
 
 void Mlecz::akcja() {
+    if (!swiat) return;
+
     for (int i = 0; i < 3; ++i) {
         if (rand() % 10 == 0) {
             std::vector<Punkt> wolne = swiat->getWolnePolaObok(polozenie);

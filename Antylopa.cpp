@@ -18,7 +18,6 @@ void Antylopa::akcja() {
     std::vector<Punkt> sasiednie = swiat->getSasiedniePola(polozenie);
     std::vector<Punkt> dalsze;
 
-    // Spróbuj pójœæ o 2 pola w jednym kierunku
     for (const Punkt& p : sasiednie) {
         int dx = p.x - polozenie.x;
         int dy = p.y - polozenie.y;
@@ -33,9 +32,9 @@ void Antylopa::akcja() {
     if (!dalsze.empty()) {
         Punkt cel = dalsze[rand() % dalsze.size()];
         Organizm* o = swiat->getOrganizmNa(cel);
-        if (o) {
+
+        if (o != nullptr) {
             kolizja(o);
-            return;  // ? Zabezpieczenie przed kontynuacj¹ po kolizji
         }
         else {
             polozenie = cel;
@@ -56,5 +55,5 @@ void Antylopa::kolizja(Organizm* inny) {
         }
     }
 
-    Zwierze::kolizja(inny);  // normalna walka
+    Zwierze::kolizja(inny); // normalna walka
 }

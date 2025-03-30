@@ -14,9 +14,14 @@ std::string Guarana::nazwa() const {
 }
 
 void Guarana::kolizja(Organizm* inny) {
-    inny->setSila(inny->getSila() + 3);  // bonus +3 do si³y
-    std::string atakujacy = inny->nazwa();
-    std::string ja = nazwa();
-    swiat->usunOrganizm(this);
-    swiat->dodajLog(ja + " zosta³a zjedzona przez " + atakujacy + " (zyska³ +3 si³y)");
+    if (swiat && inny) {
+        int nowaSila = inny->getSila() + 3;
+        inny->setSila(nowaSila);
+
+        std::string atakujacy = inny->nazwa();
+        std::string ja = nazwa();
+
+        swiat->dodajLog(ja + " zosta³a zjedzona przez " + atakujacy + " (zyska³ +3 si³y)");
+        swiat->usunOrganizm(this);
+    }
 }

@@ -8,6 +8,8 @@ Zwierze::Zwierze(Swiat* swiat, Punkt polozenie, int sila, int inicjatywa)
 }
 
 void Zwierze::akcja() {
+    if (!swiat) return;
+
     std::vector<Punkt> sasiednie = swiat->getSasiedniePola(polozenie);
 
     if (!sasiednie.empty()) {
@@ -16,7 +18,7 @@ void Zwierze::akcja() {
 
         if (cel != nullptr) {
             kolizja(cel);
-            return;  // Zabezpieczenie: jeśli umrę w kolizji, nie kontynuuj
+            return;  // przerwij akcję – organizm może zostać zabity
         }
         else {
             polozenie = nowaPozycja;
@@ -27,6 +29,9 @@ void Zwierze::akcja() {
 }
 
 void Zwierze::kolizja(Organizm* inny) {
+    if (!swiat || !inny) return;
+
+    // Rozmnażanie (tego samego typu)
     if (typeid(*this) == typeid(*inny)) {
         std::vector<Punkt> wolne = swiat->getWolnePolaObok(polozenie);
         if (!wolne.empty()) {
@@ -37,16 +42,17 @@ void Zwierze::kolizja(Organizm* inny) {
         return;
     }
 
+    std::string nazwaA = nazwa();
+    std::string nazwaB = inny->nazwa();
+
     if (inny->getSila() <= sila) {
-        Punkt jegoPozycja = inny->getPolozenie();     // zapisz pozycję
-        std::string jegoNazwa = inny->nazwa();        // zapisz nazwę
-        swiat->usunOrganizm(inny);                    // usuń dopiero po zapisie
+        Punkt jegoPozycja = inny->getPolozenie();
+        swiat->dodajLog(nazwaA + " zabił " + nazwaB);
+        swiat->usunOrganizm(inny);
         polozenie = jegoPozycja;
-        swiat->dodajLog(nazwa() + " zabił " + jegoNazwa);
     }
     else {
-        std::string mojNazwa = nazwa();               // zapisz swoją nazwę
-        swiat->usunOrganizm(this);                    // usuń siebie
-        swiat->dodajLog(mojNazwa + " został zabity przez " + inny->nazwa());
+        swiat->dodajLog(nazwaA + " został zabity przez " + nazwaB);
+        swiat->usunOrganizm(this);
     }
 }
