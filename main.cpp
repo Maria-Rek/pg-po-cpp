@@ -7,7 +7,8 @@
 #include "Trawa.h"
 #include "Guarana.h"
 #include "Mlecz.h"
-#include "WilczeJagody.h"  // ✅ dodane
+#include "WilczeJagody.h"
+#include "BarszczSosnowskiego.h"
 
 #include <cstdlib>
 #include <ctime>
@@ -29,16 +30,17 @@ int main() {
     swiat.dodajOrganizm(new Guarana(&swiat, Punkt(4, 5)));
     swiat.dodajOrganizm(new Mlecz(&swiat, Punkt(5, 5)));
     swiat.dodajOrganizm(new WilczeJagody(&swiat, Punkt(6, 6)));
+    swiat.dodajOrganizm(new BarszczSosnowskiego(&swiat, Punkt(2, 4)));
 
     // Symulacja: 10 tur
     for (int i = 0; i < 10; ++i) {
         swiat.rysujSwiat();
         swiat.wykonajTure();
         std::cout << "\nNaciśnij Enter, aby przejść do następnej tury...";
-
-
         std::cin.get();
     }
 
     return 0;
 }
+
+
