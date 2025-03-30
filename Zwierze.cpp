@@ -16,6 +16,7 @@ void Zwierze::akcja() {
 
         if (cel != nullptr) {
             kolizja(cel);
+            return;  // Zabezpieczenie: jeśli umrę w kolizji, nie kontynuuj
         }
         else {
             polozenie = nowaPozycja;
@@ -28,26 +29,24 @@ void Zwierze::akcja() {
 void Zwierze::kolizja(Organizm* inny) {
     if (typeid(*this) == typeid(*inny)) {
         std::vector<Punkt> wolne = swiat->getWolnePolaObok(polozenie);
-
         if (!wolne.empty()) {
             Punkt dzieckoPozycja = wolne[rand() % wolne.size()];
             swiat->stworzOrganizm(typeid(*this), dzieckoPozycja);
             swiat->dodajLog(nazwa() + " rozmnożył się");
         }
-
         return;
     }
 
     if (inny->getSila() <= sila) {
-        std::string jegoNazwa = inny->nazwa();
-        Punkt jegoPozycja = inny->getPolozenie();
-        swiat->usunOrganizm(inny);
+        Punkt jegoPozycja = inny->getPolozenie();     // zapisz pozycję
+        std::string jegoNazwa = inny->nazwa();        // zapisz nazwę
+        swiat->usunOrganizm(inny);                    // usuń dopiero po zapisie
         polozenie = jegoPozycja;
         swiat->dodajLog(nazwa() + " zabił " + jegoNazwa);
     }
     else {
-        std::string mojaNazwa = nazwa();
-        swiat->usunOrganizm(this);
-        swiat->dodajLog(mojaNazwa + " został zabity przez " + inny->nazwa());
+        std::string mojNazwa = nazwa();               // zapisz swoją nazwę
+        swiat->usunOrganizm(this);                    // usuń siebie
+        swiat->dodajLog(mojNazwa + " został zabity przez " + inny->nazwa());
     }
 }
