@@ -1,16 +1,15 @@
 #include "Organizm.h"
-#include "Swiat.h"
 
 Organizm::Organizm(Swiat* swiat, Punkt polozenie, int sila, int inicjatywa)
     : swiat(swiat), polozenie(polozenie), sila(sila), inicjatywa(inicjatywa), wiek(0) {
 }
 
-int Organizm::getSila() const {
-    return sila;
+Punkt Organizm::getPolozenie() const {
+    return polozenie;
 }
 
-void Organizm::setSila(int s) {
-    sila = s;
+int Organizm::getSila() const {
+    return sila;
 }
 
 int Organizm::getInicjatywa() const {
@@ -25,14 +24,6 @@ void Organizm::zwiekszWiek() {
     wiek++;
 }
 
-Punkt Organizm::getPolozenie() const {
-    return polozenie;
-}
-
-void Organizm::setPolozenie(Punkt p) {
-    polozenie = p;
-}
-
-Swiat* Organizm::getSwiat() const {
-    return swiat;
+void Organizm::zwiekszSile(int ile) {
+    sila += ile;
 }

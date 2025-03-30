@@ -16,7 +16,7 @@ std::string Zolw::nazwa() const {
 
 void Zolw::akcja() {
     if ((swiat->getTura() - ostatniRuch) >= 4) {
-        ostatniRuch = swiat->getTura();  // zapamiêtaj turê
+        ostatniRuch = swiat->getTura();
 
         std::vector<Punkt> sasiednie = swiat->getSasiedniePola(polozenie);
         if (!sasiednie.empty()) {
@@ -35,18 +35,17 @@ void Zolw::akcja() {
 void Zolw::kolizja(Organizm* inny) {
     if (inny->getSila() < 5) {
         swiat->dodajLog(nazwa() + " odbi³ atak " + inny->nazwa());
-        return;  // ¿ó³w nie zostaje zaatakowany
+        return;
     }
 
-    // normalna walka
     if (inny->getSila() >= sila) {
-        std::string mojNazwa = nazwa();             //  zapisz nazwê przed usuniêciem
+        std::string mojNazwa = nazwa();
         std::string jegoNazwa = inny->nazwa();
         swiat->usunOrganizm(this);
         swiat->dodajLog(mojNazwa + " zosta³ zabity przez " + jegoNazwa);
     }
     else {
-        std::string jegoNazwa = inny->nazwa();       // zapisz nazwê przed usuniêciem
+        std::string jegoNazwa = inny->nazwa();
         Punkt jegoPozycja = inny->getPolozenie();
         swiat->usunOrganizm(inny);
         polozenie = jegoPozycja;

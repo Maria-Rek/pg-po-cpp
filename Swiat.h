@@ -2,24 +2,20 @@
 
 #include <vector>
 #include <string>
-#include <typeinfo>  // potrzebne do u¿ycia typeid()
+#include <typeinfo>
 
 #include "Organizm.h"
 #include "Punkt.h"
-
-using std::vector;
-using std::string;
-using std::type_info;
 
 class Swiat {
 private:
     int szerokosc;
     int wysokosc;
     int tura;
-    vector<Organizm*> organizmy;
-    vector<string> logi;
+    std::vector<Organizm*> organizmy;
+    std::vector<std::string> logi;
 
-    void sortujOrganizmy();  // wg inicjatywy i wieku
+    void sortujOrganizmy();
 
 public:
     Swiat(int szerokosc = 20, int wysokosc = 20);
@@ -29,16 +25,16 @@ public:
     void rysujSwiat();
 
     Organizm* getOrganizmNa(const Punkt& p) const;
-    vector<Punkt> getSasiedniePola(const Punkt& p) const;
-    vector<Punkt> getWolnePolaObok(const Punkt& p) const;
+    std::vector<Punkt> getSasiedniePola(const Punkt& p) const;
+    std::vector<Punkt> getWolnePolaObok(const Punkt& p) const;
 
-    void stworzOrganizm(const type_info& typ, const Punkt& p);
+    void stworzOrganizm(const std::type_info& typ, const Punkt& p);
     void dodajOrganizm(Organizm* org);
     void usunOrganizm(Organizm* org);
 
-    void dodajLog(const string& tekst);
+    void dodajLog(const std::string& tekst);
 
     int getSzerokosc() const;
     int getWysokosc() const;
-    int getTura() const; 
+    int getTura() const;
 };
