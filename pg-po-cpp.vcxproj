@@ -127,7 +127,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="pg-po-cpp.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Organizm.cpp" />
+    <ClCompile Include="Punkt.cpp" />
+    <ClCompile Include="Roslina.cpp" />
+    <ClCompile Include="Swiat.cpp" />
+    <ClCompile Include="Wilk.cpp" />
+    <ClCompile Include="Zwierze.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Organizm.h" />
+    <ClInclude Include="Punkt.h" />
+    <ClInclude Include="Roslina.h" />
+    <ClInclude Include="Swiat.h" />
+    <ClInclude Include="Wilk.h" />
+    <ClInclude Include="Zwierze.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
