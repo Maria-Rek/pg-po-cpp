@@ -38,14 +38,14 @@ void Zwierze::kolizja(Organizm* inny) {
     }
 
     if (inny->getSila() <= sila) {
-        Punkt jegoPozycja = inny->getPolozenie();     // 💖 zapisz pozycję
-        std::string jegoNazwa = inny->nazwa();        // 💖 zapisz nazwę
+        Punkt jegoPozycja = inny->getPolozenie();     // zapisz pozycję
+        std::string jegoNazwa = inny->nazwa();        // zapisz nazwę
         swiat->usunOrganizm(inny);                    // usuń dopiero po zapisie
         polozenie = jegoPozycja;
         swiat->dodajLog(nazwa() + " zabił " + jegoNazwa);
     }
     else {
-        std::string mojNazwa = nazwa();               // 💖 zapisz swoją nazwę
+        std::string mojNazwa = nazwa();               // zapisz swoją nazwę
         swiat->usunOrganizm(this);                    // usuń siebie
         swiat->dodajLog(mojNazwa + " został zabity przez " + inny->nazwa());
     }

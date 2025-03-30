@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Antylopa.cpp" />
+    <ClCompile Include="Guarana.cpp" />
     <ClCompile Include="Lis.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Organizm.cpp" />
@@ -135,18 +136,21 @@
     <ClCompile Include="Punkt.cpp" />
     <ClCompile Include="Roslina.cpp" />
     <ClCompile Include="Swiat.cpp" />
+    <ClCompile Include="Trawa.cpp" />
     <ClCompile Include="Wilk.cpp" />
     <ClCompile Include="Zolw.cpp" />
     <ClCompile Include="Zwierze.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Antylopa.h" />
+    <ClInclude Include="Guarana.h" />
     <ClInclude Include="Lis.h" />
     <ClInclude Include="Organizm.h" />
     <ClInclude Include="Owca.h" />
     <ClInclude Include="Punkt.h" />
     <ClInclude Include="Roslina.h" />
     <ClInclude Include="Swiat.h" />
+    <ClInclude Include="Trawa.h" />
     <ClInclude Include="Wilk.h" />
     <ClInclude Include="Zolw.h" />
     <ClInclude Include="Zwierze.h" />

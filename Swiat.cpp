@@ -1,4 +1,4 @@
-#include "Swiat.h"
+﻿#include "Swiat.h"
 #include <iostream>
 #include <algorithm>
 #include <typeinfo>
@@ -6,6 +6,9 @@
 #include "Owca.h"
 #include "Lis.h"
 #include "Zolw.h"
+#include "Antylopa.h"
+#include "Trawa.h"
+#include "Guarana.h"  // NOWE
 
 Swiat::Swiat(int szerokosc, int wysokosc)
     : szerokosc(szerokosc), wysokosc(wysokosc), tura(1) {
@@ -109,6 +112,15 @@ void Swiat::stworzOrganizm(const type_info& typ, const Punkt& p) {
     }
     else if (typ == typeid(Zolw)) {
         organizmy.push_back(new Zolw(this, p));
+    }
+    else if (typ == typeid(Antylopa)) {
+        organizmy.push_back(new Antylopa(this, p));
+    }
+    else if (typ == typeid(Trawa)) {
+        organizmy.push_back(new Trawa(this, p));
+    }
+    else if (typ == typeid(Guarana)) {  // GUARANA
+        organizmy.push_back(new Guarana(this, p));
     }
 }
 

@@ -33,10 +33,13 @@ void Antylopa::akcja() {
     if (!dalsze.empty()) {
         Punkt cel = dalsze[rand() % dalsze.size()];
         Organizm* o = swiat->getOrganizmNa(cel);
-        if (o)
+        if (o) {
             kolizja(o);
-        else
+            return;  // ? Zabezpieczenie przed kontynuacj¹ po kolizji
+        }
+        else {
             polozenie = cel;
+        }
     }
 
     zwiekszWiek();
