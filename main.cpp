@@ -6,11 +6,15 @@
 #include "Antylopa.h"
 #include "Trawa.h"
 #include "Guarana.h"
+#include "Mlecz.h"
+#include "WilczeJagody.h"  // ✅ dodane
+
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
 
 int main() {
+    system("chcp 1250");
     std::srand(static_cast<unsigned>(std::time(nullptr)));
 
     Swiat swiat(10, 10);  // Plansza 10x10
@@ -22,7 +26,9 @@ int main() {
     swiat.dodajOrganizm(new Zolw(&swiat, Punkt(3, 6)));
     swiat.dodajOrganizm(new Antylopa(&swiat, Punkt(7, 7)));
     swiat.dodajOrganizm(new Trawa(&swiat, Punkt(5, 1)));
-    swiat.dodajOrganizm(new Guarana(&swiat, Punkt(4, 5)));  // Guarana do testów
+    swiat.dodajOrganizm(new Guarana(&swiat, Punkt(4, 5)));
+    swiat.dodajOrganizm(new Mlecz(&swiat, Punkt(5, 5)));
+    //swiat.dodajOrganizm(new WilczeJagody(&swiat, Punkt(6, 5))); 
 
     // Symulacja: 10 tur
     for (int i = 0; i < 10; ++i) {

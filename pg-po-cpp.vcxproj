@@ -138,6 +138,7 @@
     <ClCompile Include="Roslina.cpp" />
     <ClCompile Include="Swiat.cpp" />
     <ClCompile Include="Trawa.cpp" />
+    <ClCompile Include="WilczeJagody.cpp" />
     <ClCompile Include="Wilk.cpp" />
     <ClCompile Include="Zolw.cpp" />
     <ClCompile Include="Zwierze.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Roslina.h" />
     <ClInclude Include="Swiat.h" />
     <ClInclude Include="Trawa.h" />
+    <ClInclude Include="WilczeJagody.h" />
     <ClInclude Include="Wilk.h" />
     <ClInclude Include="Zolw.h" />
     <ClInclude Include="Zwierze.h" />

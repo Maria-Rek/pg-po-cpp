@@ -8,7 +8,8 @@
 #include "Zolw.h"
 #include "Antylopa.h"
 #include "Trawa.h"
-#include "Guarana.h"  // NOWE
+#include "Guarana.h"
+#include "Mlecz.h"  // ✅ dodane
 
 Swiat::Swiat(int szerokosc, int wysokosc)
     : szerokosc(szerokosc), wysokosc(wysokosc), tura(1) {
@@ -119,8 +120,11 @@ void Swiat::stworzOrganizm(const type_info& typ, const Punkt& p) {
     else if (typ == typeid(Trawa)) {
         organizmy.push_back(new Trawa(this, p));
     }
-    else if (typ == typeid(Guarana)) {  // GUARANA
+    else if (typ == typeid(Guarana)) {
         organizmy.push_back(new Guarana(this, p));
+    }
+    else if (typ == typeid(Mlecz)) {
+        organizmy.push_back(new Mlecz(this, p));  // ✅ dodane
     }
 }
 
