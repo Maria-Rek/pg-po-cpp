@@ -13,6 +13,7 @@
 #include "Mlecz.h"
 #include "WilczeJagody.h"
 #include "BarszczSosnowskiego.h"
+#include "CyberOwca.h"
 
 Swiat::Swiat(int szerokosc, int wysokosc)
     : szerokosc(szerokosc), wysokosc(wysokosc), tura(1) {
@@ -115,6 +116,7 @@ void Swiat::stworzOrganizm(const std::type_info& typ, const Punkt& p) {
     else if (typ == typeid(Mlecz)) organizmy.push_back(new Mlecz(this, p));
     else if (typ == typeid(WilczeJagody)) organizmy.push_back(new WilczeJagody(this, p));
     else if (typ == typeid(BarszczSosnowskiego)) organizmy.push_back(new BarszczSosnowskiego(this, p));
+    else if (typ == typeid(CyberOwca)) organizmy.push_back(new CyberOwca(this, p));
 }
 
 void Swiat::dodajOrganizm(Organizm* org) {

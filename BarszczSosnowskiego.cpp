@@ -1,6 +1,7 @@
 #include "BarszczSosnowskiego.h"
 #include "Swiat.h"
-#include "Zwierze.h"  // potrzebne do dynamic_cast
+#include "Zwierze.h"
+#include "CyberOwca.h"  // potrzebne do dynamic_cast
 #include <cstdlib>
 #include <typeinfo>
 
@@ -21,7 +22,11 @@ void BarszczSosnowskiego::akcja() {
 
     for (const Punkt& p : sasiednie) {
         Organizm* o = swiat->getOrganizmNa(p);
-        if (o != nullptr && dynamic_cast<Zwierze*>(o) != nullptr) {
+        // Zabija tylko zwierzêta, ale NIE CyberOwce
+        if (o != nullptr &&
+            dynamic_cast<Zwierze*>(o) != nullptr &&
+            dynamic_cast<CyberOwca*>(o) == nullptr) {
+
             swiat->dodajLog(nazwa() + " zabi³ " + o->nazwa() + " obok siebie");
             swiat->usunOrganizm(o);
         }
