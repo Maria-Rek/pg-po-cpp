@@ -15,4 +15,3 @@ private:
     Punkt znajdzNajblizszyBarszcz() const;
     int dystans(const Punkt& a, const Punkt& b) const;
 };
-

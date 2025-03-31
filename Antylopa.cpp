@@ -45,15 +45,19 @@ void Antylopa::akcja() {
 }
 
 void Antylopa::kolizja(Organizm* inny) {
-    if (rand() % 2 == 0) {
+    if (!swiat || !inny) return;
+
+    if (rand() % 2 == 0) {  // 50% szans na ucieczkê
         std::vector<Punkt> wolne = swiat->getWolnePolaObok(polozenie);
         if (!wolne.empty()) {
             Punkt ucieczka = wolne[rand() % wolne.size()];
             polozenie = ucieczka;
+
             swiat->dodajLog(nazwa() + " uciek³a przed " + inny->nazwa());
-            return;
+            return;  // zakoñcz kolizjê
         }
     }
 
-    Zwierze::kolizja(inny); // normalna walka
+    // Jeœli nie uda³o siê uciec – normalna walka
+    Zwierze::kolizja(inny);
 }

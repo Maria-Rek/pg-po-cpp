@@ -36,3 +36,7 @@ void Organizm::setPolozenie(Punkt p) {
 Swiat* Organizm::getSwiat() const {
     return swiat;
 }
+
+bool Organizm::czyOdbilAtak(Organizm* /*atakujacy*/) const {
+    return false;
+}

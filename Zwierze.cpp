@@ -18,7 +18,7 @@ void Zwierze::akcja() {
 
         if (cel != nullptr) {
             kolizja(cel);
-            return;  // przerwij akcję – organizm może zostać zabity
+            return;
         }
         else {
             polozenie = nowaPozycja;
@@ -31,7 +31,7 @@ void Zwierze::akcja() {
 void Zwierze::kolizja(Organizm* inny) {
     if (!swiat || !inny) return;
 
-    // Rozmnażanie (tego samego typu)
+    // Rozmnażanie (ten sam typ)
     if (typeid(*this) == typeid(*inny)) {
         std::vector<Punkt> wolne = swiat->getWolnePolaObok(polozenie);
         if (!wolne.empty()) {
@@ -39,6 +39,12 @@ void Zwierze::kolizja(Organizm* inny) {
             swiat->stworzOrganizm(typeid(*this), dzieckoPozycja);
             swiat->dodajLog(nazwa() + " rozmnożył się");
         }
+        return;
+    }
+
+    // Odbicie ataku — specjalna zdolność (np. żółw)
+    if (inny->czyOdbilAtak(this)) {
+        swiat->dodajLog(inny->nazwa() + " odbił atak " + nazwa());
         return;
     }
 

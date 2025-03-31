@@ -31,4 +31,6 @@ public:
     Punkt getPolozenie() const;
     void setPolozenie(Punkt p);
     Swiat* getSwiat() const;
+
+    virtual bool czyOdbilAtak(Organizm* atakujacy) const;  // nowa metoda
 };

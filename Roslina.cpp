@@ -29,5 +29,7 @@ void Roslina::kolizja(Organizm* inny) {
     std::string nazwaAtakujacego = inny->nazwa();
 
     swiat->dodajLog(nazwaRosliny + " zosta³o zjedzone przez " + nazwaAtakujacego);
+
+    // najpierw log, potem usuniêcie
     swiat->usunOrganizm(this);
 }

@@ -34,25 +34,6 @@ void Zolw::akcja() {
     zwiekszWiek();
 }
 
-void Zolw::kolizja(Organizm* inny) {
-    if (!swiat || !inny) return;
-
-    if (inny->getSila() < 5) {
-        swiat->dodajLog(nazwa() + " odbi³ atak " + inny->nazwa());
-        return;
-    }
-
-    std::string mojNazwa = nazwa();
-    std::string jegoNazwa = inny->nazwa();
-
-    if (inny->getSila() >= sila) {
-        swiat->dodajLog(mojNazwa + " zosta³ zabity przez " + jegoNazwa);
-        swiat->usunOrganizm(this);
-    }
-    else {
-        Punkt jegoPozycja = inny->getPolozenie();
-        swiat->dodajLog(nazwa() + " zabi³ " + jegoNazwa);
-        swiat->usunOrganizm(inny);
-        polozenie = jegoPozycja;
-    }
+bool Zolw::czyOdbilAtak(Organizm* atakujacy) const {
+    return atakujacy->getSila() < 5;
 }

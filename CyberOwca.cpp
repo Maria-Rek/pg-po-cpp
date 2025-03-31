@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <limits>
+#include <typeinfo>
 
 CyberOwca::CyberOwca(Swiat* swiat, Punkt polozenie)
     : Zwierze(swiat, polozenie, 11, 4) {
@@ -20,17 +21,26 @@ std::string CyberOwca::nazwa() const {
 void CyberOwca::akcja() {
     Punkt cel = znajdzNajblizszyBarszcz();
 
-    if (cel.x != -1) {
-        int dx = (cel.x > polozenie.x) ? 1 : (cel.x < polozenie.x) ? -1 : 0;
-        int dy = (cel.y > polozenie.y) ? 1 : (cel.y < polozenie.y) ? -1 : 0;
-
-        Punkt nowaPozycja(polozenie.x + dx, polozenie.y + dy);
-        Organizm* celny = swiat->getOrganizmNa(nowaPozycja);
-        if (celny)
-            kolizja(celny);
-        else
-            polozenie = nowaPozycja;
+    if (cel.x == -1 && cel.y == -1) {
+        swiat->dodajLog(nazwa() + " nie znalaz³a Barszczu Sosnowskiego");
+        return;
     }
+
+    int dx = (cel.x > polozenie.x) ? 1 : (cel.x < polozenie.x) ? -1 : 0;
+    int dy = (cel.y > polozenie.y) ? 1 : (cel.y < polozenie.y) ? -1 : 0;
+
+    Punkt nowaPozycja(polozenie.x + dx, polozenie.y + dy);
+
+    // Jeœli nie zmienia pozycji, nie rób kolizji
+    if (nowaPozycja == polozenie) {
+        return;
+    }
+
+    Organizm* celny = swiat->getOrganizmNa(nowaPozycja);
+    if (celny)
+        kolizja(celny);
+    else
+        polozenie = nowaPozycja;
 
     zwiekszWiek();
 }

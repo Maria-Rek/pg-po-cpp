@@ -37,6 +37,9 @@ void Lis::akcja() {
             polozenie = nowaPozycja;
         }
     }
+    else {
+        swiat->dodajLog(nazwa() + " nie znalaz³ bezpiecznego pola i pozosta³ w miejscu");
+    }
 
     zwiekszWiek();
 }
