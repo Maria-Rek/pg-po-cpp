@@ -130,6 +130,7 @@
     <ClCompile Include="Antylopa.cpp" />
     <ClCompile Include="BarszczSosnowskiego.cpp" />
     <ClCompile Include="CyberOwca.cpp" />
+    <ClCompile Include="Czlowiek.cpp" />
     <ClCompile Include="Guarana.cpp" />
     <ClCompile Include="Lis.cpp" />
     <ClCompile Include="main.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="Antylopa.h" />
     <ClInclude Include="BarszczSosnowskiego.h" />
     <ClInclude Include="CyberOwca.h" />
+    <ClInclude Include="Czlowiek.h" />
     <ClInclude Include="Guarana.h" />
     <ClInclude Include="Lis.h" />
     <ClInclude Include="Mlecz.h" />
