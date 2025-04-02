@@ -1,15 +1,15 @@
 ﻿#include "Swiat.h"
-#include "Wilk.h"
-#include "Owca.h"
-#include "Lis.h"
-#include "Zolw.h"
-#include "Antylopa.h"
-#include "Trawa.h"
-#include "Guarana.h"
-#include "Mlecz.h"
-#include "WilczeJagody.h"
-#include "BarszczSosnowskiego.h"
-#include "CyberOwca.h"
+#include "Zwierzeta/Wilk.h"
+#include "Zwierzeta/Owca.h"
+#include "Zwierzeta/Lis.h"
+#include "Zwierzeta/Zolw.h"
+#include "Zwierzeta/Antylopa.h"
+#include "Rosliny/Trawa.h"
+#include "Rosliny/Guarana.h"
+#include "Rosliny/Mlecz.h"
+#include "Rosliny/WilczeJagody.h"
+#include "Rosliny/BarszczSosnowskiego.h"
+#include "Zwierzeta/CyberOwca.h"
 #include "Czlowiek.h"
 
 #include <cstdlib>
@@ -17,7 +17,7 @@
 #include <iostream>
 
 int main() {
-    system("chcp 65001"); // UTF-8 dla emoji na Windows (zamiast 1250!)
+    system("chcp 65001");
     std::srand(static_cast<unsigned>(std::time(nullptr)));
 
     Swiat swiat(10, 10);  // Plansza 10x10 (Człowiek na środku)
