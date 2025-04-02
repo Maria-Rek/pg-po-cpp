@@ -3,17 +3,17 @@
 #include <algorithm>
 #include <typeinfo>
 
-#include "Wilk.h"
-#include "Owca.h"
-#include "Lis.h"
-#include "Zolw.h"
-#include "Antylopa.h"
-#include "Trawa.h"
-#include "Guarana.h"
-#include "Mlecz.h"
-#include "WilczeJagody.h"
-#include "BarszczSosnowskiego.h"
-#include "CyberOwca.h"
+#include "Zwierzeta/Wilk.h"
+#include "Zwierzeta/Owca.h"
+#include "Zwierzeta/Lis.h"
+#include "Zwierzeta/Zolw.h"
+#include "Zwierzeta/Antylopa.h"
+#include "Rosliny/Trawa.h"
+#include "Rosliny/Guarana.h"
+#include "Rosliny/Mlecz.h"
+#include "Rosliny/WilczeJagody.h"
+#include "Rosliny/BarszczSosnowskiego.h"
+#include "Zwierzeta/CyberOwca.h"
 #include "Czlowiek.h"
 
 Swiat::Swiat(int szerokosc, int wysokosc)
