@@ -1,6 +1,6 @@
 ﻿#include "Czlowiek.h"
-#include "../Swiat.h"
-#include "../Organizm.h"
+#include "Swiat.h"
+#include "Organizm.h"
 #include <iostream>
 #include <cctype>
 #include <vector>
