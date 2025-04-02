@@ -1,4 +1,4 @@
-﻿#include "../Antylopa.h"
+﻿#include "Antylopa.h"
 #include "../Swiat.h"
 #include <cstdlib>
 

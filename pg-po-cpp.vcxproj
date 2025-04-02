@@ -18,6 +18,45 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Czlowiek.h" />
+    <ClInclude Include="Organizm.h" />
+    <ClInclude Include="Punkt.h" />
+    <ClInclude Include="Roslina.h" />
+    <ClInclude Include="Rosliny\BarszczSosnowskiego.h" />
+    <ClInclude Include="Rosliny\Guarana.h" />
+    <ClInclude Include="Rosliny\Mlecz.h" />
+    <ClInclude Include="Rosliny\Trawa.h" />
+    <ClInclude Include="Rosliny\WilczeJagody.h" />
+    <ClInclude Include="Swiat.h" />
+    <ClInclude Include="Zwierze.h" />
+    <ClInclude Include="Zwierzeta\Antylopa.h" />
+    <ClInclude Include="Zwierzeta\CyberOwca.h" />
+    <ClInclude Include="Zwierzeta\Lis.h" />
+    <ClInclude Include="Zwierzeta\Owca.h" />
+    <ClInclude Include="Zwierzeta\Wilk.h" />
+    <ClInclude Include="Zwierzeta\Zolw.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Czlowiek.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Organizm.cpp" />
+    <ClCompile Include="Punkt.cpp" />
+    <ClCompile Include="Roslina.cpp" />
+    <ClCompile Include="Rosliny\BarszczSosnowskiego.cpp" />
+    <ClCompile Include="Rosliny\Guarana.cpp" />
+    <ClCompile Include="Rosliny\Mlecz.cpp" />
+    <ClCompile Include="Rosliny\Trawa.cpp" />
+    <ClCompile Include="Rosliny\WilczeJagody.cpp" />
+    <ClCompile Include="Swiat.cpp" />
+    <ClCompile Include="Zwierze.cpp" />
+    <ClCompile Include="Zwierzeta\Antylopa.cpp" />
+    <ClCompile Include="Zwierzeta\CyberOwca.cpp" />
+    <ClCompile Include="Zwierzeta\Lis.cpp" />
+    <ClCompile Include="Zwierzeta\Owca.cpp" />
+    <ClCompile Include="Zwierzeta\Wilk.cpp" />
+    <ClCompile Include="Zwierzeta\Zolw.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -126,45 +165,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Antylopa.cpp" />
-    <ClCompile Include="BarszczSosnowskiego.cpp" />
-    <ClCompile Include="CyberOwca.cpp" />
-    <ClCompile Include="Czlowiek.cpp" />
-    <ClCompile Include="Guarana.cpp" />
-    <ClCompile Include="Lis.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Mlecz.cpp" />
-    <ClCompile Include="Organizm.cpp" />
-    <ClCompile Include="Owca.cpp" />
-    <ClCompile Include="Punkt.cpp" />
-    <ClCompile Include="Roslina.cpp" />
-    <ClCompile Include="Swiat.cpp" />
-    <ClCompile Include="Trawa.cpp" />
-    <ClCompile Include="WilczeJagody.cpp" />
-    <ClCompile Include="Wilk.cpp" />
-    <ClCompile Include="Zolw.cpp" />
-    <ClCompile Include="Zwierze.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Antylopa.h" />
-    <ClInclude Include="BarszczSosnowskiego.h" />
-    <ClInclude Include="CyberOwca.h" />
-    <ClInclude Include="Czlowiek.h" />
-    <ClInclude Include="Guarana.h" />
-    <ClInclude Include="Lis.h" />
-    <ClInclude Include="Mlecz.h" />
-    <ClInclude Include="Organizm.h" />
-    <ClInclude Include="Owca.h" />
-    <ClInclude Include="Punkt.h" />
-    <ClInclude Include="Roslina.h" />
-    <ClInclude Include="Swiat.h" />
-    <ClInclude Include="Trawa.h" />
-    <ClInclude Include="WilczeJagody.h" />
-    <ClInclude Include="Wilk.h" />
-    <ClInclude Include="Zolw.h" />
-    <ClInclude Include="Zwierze.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

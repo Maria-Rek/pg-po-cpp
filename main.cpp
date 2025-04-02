@@ -1,4 +1,5 @@
-﻿#include "Swiat.h"
+﻿
+#include "Swiat.h"
 #include "Zwierzeta/Wilk.h"
 #include "Zwierzeta/Owca.h"
 #include "Zwierzeta/Lis.h"
@@ -18,6 +19,7 @@
 
 int main() {
     system("chcp 65001");
+
     std::srand(static_cast<unsigned>(std::time(nullptr)));
 
     Swiat swiat(10, 10);  // Plansza 10x10 (Człowiek na środku)
