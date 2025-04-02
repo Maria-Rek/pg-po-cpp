@@ -1,5 +1,5 @@
 ﻿#include "Zolw.h"
-#include "Swiat.h"
+#include "../Swiat.h"
 #include <cstdlib>
 
 Zolw::Zolw(Swiat* swiat, Punkt polozenie)
