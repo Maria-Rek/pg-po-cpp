@@ -1,5 +1,5 @@
 ﻿#include "Mlecz.h"
-#include "Swiat.h"
+#include "../Swiat.h"
 #include <cstdlib>
 #include <typeinfo>
 
