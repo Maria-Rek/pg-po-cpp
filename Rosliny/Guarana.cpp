@@ -1,5 +1,5 @@
 ﻿#include "Guarana.h"
-#include "Swiat.h"
+#include "../Swiat.h"
 
 Guarana::Guarana(Swiat* swiat, Punkt polozenie)
     : Roslina(USE_EMOJI ? u8"🍒" : "G", swiat, polozenie, 0) {
