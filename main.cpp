@@ -9,21 +9,20 @@
 #include "Mlecz.h"
 #include "WilczeJagody.h"
 #include "BarszczSosnowskiego.h"
-#include "CyberOwca.h" 
-
-
+#include "CyberOwca.h"
+#include "Czlowiek.h"
 
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
 
 int main() {
-    system("chcp 1250");
+    system("chcp 65001"); // UTF-8 dla emoji na Windows (zamiast 1250!)
     std::srand(static_cast<unsigned>(std::time(nullptr)));
 
-    Swiat swiat(10, 10);  // Plansza 10x10
+    Swiat swiat(10, 10);  // Plansza 10x10 (Człowiek na środku)
 
-    // Dodajemy organizmy
+    // Dodajemy organizmy testowe
     swiat.dodajOrganizm(new Wilk(&swiat, Punkt(4, 4)));
     swiat.dodajOrganizm(new Owca(&swiat, Punkt(6, 4)));
     swiat.dodajOrganizm(new Lis(&swiat, Punkt(2, 2)));
@@ -36,8 +35,7 @@ int main() {
     swiat.dodajOrganizm(new BarszczSosnowskiego(&swiat, Punkt(2, 4)));
     swiat.dodajOrganizm(new CyberOwca(&swiat, Punkt(1, 1)));
 
-
-    // Symulacja: 10 tur
+    // Symulacja 10 tur
     for (int i = 0; i < 10; ++i) {
         swiat.rysujSwiat();
         swiat.wykonajTure();

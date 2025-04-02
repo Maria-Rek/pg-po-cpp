@@ -1,12 +1,8 @@
-#include "WilczeJagody.h"
+ï»¿#include "WilczeJagody.h"
 #include "Swiat.h"
 
 WilczeJagody::WilczeJagody(Swiat* swiat, Punkt polozenie)
-    : Roslina(swiat, polozenie, 99) {
-}
-
-char WilczeJagody::rysowanie() const {
-    return 'J';
+    : Roslina(USE_EMOJI ? u8"â˜ ï¸" : "J", swiat, polozenie, 99) {
 }
 
 std::string WilczeJagody::nazwa() const {
@@ -16,18 +12,12 @@ std::string WilczeJagody::nazwa() const {
 void WilczeJagody::kolizja(Organizm* inny) {
     if (!swiat || !inny) return;
 
-    // Zabezpieczenie: czy ten organizm nadal ¿yje
     if (swiat->getOrganizmNa(inny->getPolozenie()) != inny)
         return;
 
-    std::string atakujacy = inny->nazwa();
-    std::string jagody = nazwa();
+    swiat->dodajLog(inny->nazwa() + " zjadÅ‚ " + nazwa() + " i zginÄ…Å‚!");
+    swiat->usunOrganizm(inny);
 
-    swiat->dodajLog(atakujacy + " zjad³ " + jagody + " i zgin¹³!");
-
-    swiat->usunOrganizm(inny);  // atakuj¹cy ginie
-
-    // Czy jagody nadal istniej¹ – sprawdŸ po w³asnym po³o¿eniu
     if (swiat->getOrganizmNa(polozenie) == this) {
         swiat->usunOrganizm(this);
     }

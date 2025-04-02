@@ -1,16 +1,12 @@
-#include "BarszczSosnowskiego.h"
+ï»¿#include "BarszczSosnowskiego.h"
 #include "Swiat.h"
 #include "Zwierze.h"
-#include "CyberOwca.h"  // potrzebne do dynamic_cast
+#include "CyberOwca.h"
 #include <cstdlib>
 #include <typeinfo>
 
 BarszczSosnowskiego::BarszczSosnowskiego(Swiat* swiat, Punkt polozenie)
-    : Roslina(swiat, polozenie, 10) {
-}
-
-char BarszczSosnowskiego::rysowanie() const {
-    return 'B';
+    : Roslina(USE_EMOJI ? u8"ðŸ§ª" : "B", swiat, polozenie, 10) {
 }
 
 std::string BarszczSosnowskiego::nazwa() const {
@@ -22,25 +18,19 @@ void BarszczSosnowskiego::akcja() {
 
     for (const Punkt& p : sasiednie) {
         Organizm* o = swiat->getOrganizmNa(p);
-        // Zabija tylko zwierzêta, ale NIE CyberOwce
-        if (o != nullptr &&
-            dynamic_cast<Zwierze*>(o) != nullptr &&
-            dynamic_cast<CyberOwca*>(o) == nullptr) {
-
-            swiat->dodajLog(nazwa() + " zabi³ " + o->nazwa() + " obok siebie");
+        if (o && dynamic_cast<Zwierze*>(o) && dynamic_cast<CyberOwca*>(o) == nullptr) {
+            swiat->dodajLog(nazwa() + " zabiÅ‚ " + o->nazwa() + " obok siebie");
             swiat->usunOrganizm(o);
         }
     }
 
-    Roslina::akcja();  // mo¿e siê rozmno¿yæ
+    Roslina::akcja();
 }
 
 void BarszczSosnowskiego::kolizja(Organizm* inny) {
-    if (inny == nullptr || swiat->getOrganizmNa(inny->getPolozenie()) != inny) {
-        return; // ju¿ nie istnieje
-    }
+    if (!inny || swiat->getOrganizmNa(inny->getPolozenie()) != inny) return;
 
-    swiat->dodajLog(inny->nazwa() + " zjad³ " + nazwa() + " i zgin¹³!");
+    swiat->dodajLog(inny->nazwa() + " zjadÅ‚ " + nazwa() + " i zginÄ…Å‚!");
     swiat->usunOrganizm(inny);
 
     if (swiat->getOrganizmNa(polozenie) == this) {

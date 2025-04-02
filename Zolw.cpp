@@ -1,13 +1,9 @@
-#include "Zolw.h"
+﻿#include "Zolw.h"
 #include "Swiat.h"
 #include <cstdlib>
 
 Zolw::Zolw(Swiat* swiat, Punkt polozenie)
-    : Zwierze(swiat, polozenie, 2, 1), ostatniRuch(0) {
-}
-
-char Zolw::rysowanie() const {
-    return 'Z';
+    : Zwierze(USE_EMOJI ? u8"🐢" : "Z", swiat, polozenie, 2, 1), ostatniRuch(0) {
 }
 
 std::string Zolw::nazwa() const {

@@ -1,12 +1,8 @@
-#include "Guarana.h"
+ï»¿#include "Guarana.h"
 #include "Swiat.h"
 
 Guarana::Guarana(Swiat* swiat, Punkt polozenie)
-    : Roslina(swiat, polozenie, 0) {
-}
-
-char Guarana::rysowanie() const {
-    return 'G';
+    : Roslina(USE_EMOJI ? u8"ðŸ’" : "G", swiat, polozenie, 0) {
 }
 
 std::string Guarana::nazwa() const {
@@ -18,10 +14,7 @@ void Guarana::kolizja(Organizm* inny) {
         int nowaSila = inny->getSila() + 3;
         inny->setSila(nowaSila);
 
-        std::string atakujacy = inny->nazwa();
-        std::string ja = nazwa();
-
-        swiat->dodajLog(ja + " zosta³a zjedzona przez " + atakujacy + " (zyska³ +3 si³y)");
+        swiat->dodajLog(nazwa() + " zostaÅ‚a zjedzona przez " + inny->nazwa() + " (zyskaÅ‚ +3 siÅ‚y)");
         swiat->usunOrganizm(this);
     }
 }

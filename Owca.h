@@ -7,6 +7,5 @@ public:
     Owca(Swiat* swiat, Punkt polozenie);
     virtual ~Owca() = default;
 
-    virtual char rysowanie() const override;
     virtual std::string nazwa() const override;
 };

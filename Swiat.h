@@ -2,8 +2,7 @@
 
 #include <vector>
 #include <string>
-#include <typeinfo>  // potrzebne do u¿ycia typeid()
-
+#include <typeinfo>
 #include "Organizm.h"
 #include "Punkt.h"
 
@@ -19,7 +18,7 @@ private:
     vector<Organizm*> organizmy;
     vector<string> logi;
 
-    void sortujOrganizmy();  // wg inicjatywy i wieku
+    void sortujOrganizmy();
 
 public:
     Swiat(int szerokosc = 20, int wysokosc = 20);
@@ -40,5 +39,6 @@ public:
 
     int getSzerokosc() const;
     int getWysokosc() const;
-    int getTura() const; 
+    int getTura() const;
+    const vector<Organizm*>& getOrganizmy() const;
 };

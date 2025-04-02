@@ -3,8 +3,9 @@
 #include <cstdlib>
 #include <typeinfo>
 
-Zwierze::Zwierze(Swiat* swiat, Punkt polozenie, int sila, int inicjatywa)
+Zwierze::Zwierze(std::string ikona, Swiat* swiat, Punkt polozenie, int sila, int inicjatywa)
     : Organizm(swiat, polozenie, sila, inicjatywa) {
+    this->ikona = ikona;
 }
 
 void Zwierze::akcja() {
@@ -16,13 +17,10 @@ void Zwierze::akcja() {
         Punkt nowaPozycja = sasiednie[rand() % sasiednie.size()];
         Organizm* cel = swiat->getOrganizmNa(nowaPozycja);
 
-        if (cel != nullptr) {
+        if (cel)
             kolizja(cel);
-            return;
-        }
-        else {
+        else
             polozenie = nowaPozycja;
-        }
     }
 
     zwiekszWiek();
@@ -31,7 +29,6 @@ void Zwierze::akcja() {
 void Zwierze::kolizja(Organizm* inny) {
     if (!swiat || !inny) return;
 
-    // Rozmnażanie (ten sam typ)
     if (typeid(*this) == typeid(*inny)) {
         std::vector<Punkt> wolne = swiat->getWolnePolaObok(polozenie);
         if (!wolne.empty()) {
@@ -42,7 +39,6 @@ void Zwierze::kolizja(Organizm* inny) {
         return;
     }
 
-    // Odbicie ataku — specjalna zdolność (np. żółw)
     if (inny->czyOdbilAtak(this)) {
         swiat->dodajLog(inny->nazwa() + " odbił atak " + nazwa());
         return;

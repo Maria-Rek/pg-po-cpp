@@ -1,11 +1,7 @@
-#include "Wilk.h"
+﻿#include "Wilk.h"
 
 Wilk::Wilk(Swiat* swiat, Punkt polozenie)
-    : Zwierze(swiat, polozenie, 9, 5) {
-}  // si�a 9, inicjatywa 5
-
-char Wilk::rysowanie() const {
-    return 'W';
+    : Zwierze(USE_EMOJI ? u8"🐺" : "W", swiat, polozenie, 9, 5) {
 }
 
 std::string Wilk::nazwa() const {

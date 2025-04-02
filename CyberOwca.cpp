@@ -1,4 +1,4 @@
-#include "CyberOwca.h"
+ï»¿#include "CyberOwca.h"
 #include "Swiat.h"
 #include "BarszczSosnowskiego.h"
 #include <cstdlib>
@@ -7,11 +7,7 @@
 #include <typeinfo>
 
 CyberOwca::CyberOwca(Swiat* swiat, Punkt polozenie)
-    : Zwierze(swiat, polozenie, 11, 4) {
-}
-
-char CyberOwca::rysowanie() const {
-    return 'C';
+    : Zwierze(USE_EMOJI ? u8"ðŸ¤–" : "C", swiat, polozenie, 11, 4) {
 }
 
 std::string CyberOwca::nazwa() const {
@@ -22,7 +18,7 @@ void CyberOwca::akcja() {
     Punkt cel = znajdzNajblizszyBarszcz();
 
     if (cel.x == -1 && cel.y == -1) {
-        swiat->dodajLog(nazwa() + " nie znalaz³a Barszczu Sosnowskiego");
+        swiat->dodajLog(nazwa() + " nie znalazÅ‚a Barszczu Sosnowskiego");
         return;
     }
 
@@ -31,10 +27,8 @@ void CyberOwca::akcja() {
 
     Punkt nowaPozycja(polozenie.x + dx, polozenie.y + dy);
 
-    // Jeœli nie zmienia pozycji, nie rób kolizji
-    if (nowaPozycja == polozenie) {
+    if (nowaPozycja == polozenie)
         return;
-    }
 
     Organizm* celny = swiat->getOrganizmNa(nowaPozycja);
     if (celny)

@@ -1,9 +1,10 @@
 #pragma once
+#define USE_EMOJI 1
 
 #include "Punkt.h"
 #include <string>
 
-class Swiat;  // forward declaration
+class Swiat;
 
 class Organizm {
 protected:
@@ -12,6 +13,7 @@ protected:
     int wiek;
     Punkt polozenie;
     Swiat* swiat;
+    std::string ikona;
 
 public:
     Organizm(Swiat* swiat, Punkt polozenie, int sila, int inicjatywa);
@@ -19,10 +21,8 @@ public:
 
     virtual void akcja() = 0;
     virtual void kolizja(Organizm* inny) = 0;
-    virtual char rysowanie() const = 0;
     virtual std::string nazwa() const = 0;
 
-    // Gettery i settery
     int getSila() const;
     void setSila(int s);
     int getInicjatywa() const;
@@ -31,6 +31,7 @@ public:
     Punkt getPolozenie() const;
     void setPolozenie(Punkt p);
     Swiat* getSwiat() const;
+    std::string getIkona() const;
 
-    virtual bool czyOdbilAtak(Organizm* atakujacy) const;  // nowa metoda
+    virtual bool czyOdbilAtak(Organizm* atakujacy) const;
 };

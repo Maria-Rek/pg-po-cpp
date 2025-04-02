@@ -8,6 +8,5 @@ public:
     virtual ~Guarana() = default;
 
     virtual void kolizja(Organizm* inny) override;
-    virtual char rysowanie() const override;
     virtual std::string nazwa() const override;
 };

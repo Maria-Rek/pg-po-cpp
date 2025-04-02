@@ -1,11 +1,7 @@
-#include "Owca.h"
+﻿#include "Owca.h"
 
 Owca::Owca(Swiat* swiat, Punkt polozenie)
-    : Zwierze(swiat, polozenie, 4, 4) {
-}  // si�a 4, inicjatywa 4
-
-char Owca::rysowanie() const {
-    return 'O';
+    : Zwierze(USE_EMOJI ? u8"🐑" : "O", swiat, polozenie, 4, 4) {
 }
 
 std::string Owca::nazwa() const {

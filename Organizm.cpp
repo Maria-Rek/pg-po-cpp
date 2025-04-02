@@ -37,6 +37,10 @@ Swiat* Organizm::getSwiat() const {
     return swiat;
 }
 
+std::string Organizm::getIkona() const {
+    return ikona;
+}
+
 bool Organizm::czyOdbilAtak(Organizm* /*atakujacy*/) const {
     return false;
 }

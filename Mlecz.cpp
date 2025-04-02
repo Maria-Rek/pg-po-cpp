@@ -1,14 +1,10 @@
-#include "Mlecz.h"
+﻿#include "Mlecz.h"
 #include "Swiat.h"
 #include <cstdlib>
 #include <typeinfo>
 
 Mlecz::Mlecz(Swiat* swiat, Punkt polozenie)
-    : Roslina(swiat, polozenie, 0) {
-}
-
-char Mlecz::rysowanie() const {
-    return 'M';
+    : Roslina(USE_EMOJI ? u8"🌼" : "M", swiat, polozenie, 0) {
 }
 
 std::string Mlecz::nazwa() const {
@@ -24,7 +20,7 @@ void Mlecz::akcja() {
             if (!wolne.empty()) {
                 Punkt nowy = wolne[rand() % wolne.size()];
                 swiat->stworzOrganizm(typeid(*this), nowy);
-                swiat->dodajLog(nazwa() + " rozsia�o si�");
+                swiat->dodajLog(nazwa() + " rozsiało się");
             }
         }
     }

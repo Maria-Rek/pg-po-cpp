@@ -7,6 +7,5 @@ public:
     Trawa(Swiat* swiat, Punkt polozenie);
     virtual ~Trawa() = default;
 
-    virtual char rysowanie() const override;
     virtual std::string nazwa() const override;
 };

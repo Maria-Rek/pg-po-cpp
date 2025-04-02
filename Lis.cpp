@@ -1,13 +1,9 @@
-#include "Lis.h"
+Ôªø#include "Lis.h"
 #include "Swiat.h"
 #include <cstdlib>
 
 Lis::Lis(Swiat* swiat, Punkt polozenie)
-    : Zwierze(swiat, polozenie, 3, 7) {
-}  // si≥a 3, inicjatywa 7
-
-char Lis::rysowanie() const {
-    return 'L';
+    : Zwierze(USE_EMOJI ? u8"ü¶ä" : "L", swiat, polozenie, 3, 7) {
 }
 
 std::string Lis::nazwa() const {
@@ -30,15 +26,13 @@ void Lis::akcja() {
     if (!bezpieczne.empty()) {
         Punkt nowaPozycja = bezpieczne[rand() % bezpieczne.size()];
         Organizm* cel = swiat->getOrganizmNa(nowaPozycja);
-        if (cel != nullptr) {
+        if (cel)
             kolizja(cel);
-        }
-        else {
+        else
             polozenie = nowaPozycja;
-        }
     }
     else {
-        swiat->dodajLog(nazwa() + " nie znalaz≥ bezpiecznego pola i pozosta≥ w miejscu");
+        swiat->dodajLog(nazwa() + " nie znalaz≈Ç bezpiecznego pola i pozosta≈Ç w miejscu");
     }
 
     zwiekszWiek();

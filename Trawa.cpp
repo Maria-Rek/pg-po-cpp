@@ -1,12 +1,8 @@
-#include "Trawa.h"
+﻿#include "Trawa.h"
 
 Trawa::Trawa(Swiat* swiat, Punkt polozenie)
-    : Roslina(swiat, polozenie, 0) {
-}  // si�a 0 � nic nie robi w kolizji
-
-char Trawa::rysowanie() const {
-    return 'T';
-}
+    : Roslina(USE_EMOJI ? u8"🌿" : "T", swiat, polozenie, 0) {
+}  // siła 0 – nic nie robi w kolizji
 
 std::string Trawa::nazwa() const {
     return "Trawa";

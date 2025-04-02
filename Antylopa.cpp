@@ -1,13 +1,9 @@
-#include "Antylopa.h"
+ï»¿#include "Antylopa.h"
 #include "Swiat.h"
 #include <cstdlib>
 
 Antylopa::Antylopa(Swiat* swiat, Punkt polozenie)
-    : Zwierze(swiat, polozenie, 4, 4) {
-}
-
-char Antylopa::rysowanie() const {
-    return 'A';
+    : Zwierze(USE_EMOJI ? u8"ðŸ¦Œ" : "A", swiat, polozenie, 4, 4) {
 }
 
 std::string Antylopa::nazwa() const {
@@ -47,17 +43,15 @@ void Antylopa::akcja() {
 void Antylopa::kolizja(Organizm* inny) {
     if (!swiat || !inny) return;
 
-    if (rand() % 2 == 0) {  // 50% szans na ucieczkê
+    if (rand() % 2 == 0) {
         std::vector<Punkt> wolne = swiat->getWolnePolaObok(polozenie);
         if (!wolne.empty()) {
             Punkt ucieczka = wolne[rand() % wolne.size()];
             polozenie = ucieczka;
-
-            swiat->dodajLog(nazwa() + " uciek³a przed " + inny->nazwa());
-            return;  // zakoñcz kolizjê
+            swiat->dodajLog(nazwa() + " uciekÅ‚a przed " + inny->nazwa());
+            return;
         }
     }
 
-    // Jeœli nie uda³o siê uciec – normalna walka
     Zwierze::kolizja(inny);
 }

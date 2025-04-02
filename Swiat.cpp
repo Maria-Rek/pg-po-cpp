@@ -14,9 +14,12 @@
 #include "WilczeJagody.h"
 #include "BarszczSosnowskiego.h"
 #include "CyberOwca.h"
+#include "Czlowiek.h"
 
 Swiat::Swiat(int szerokosc, int wysokosc)
     : szerokosc(szerokosc), wysokosc(wysokosc), tura(1) {
+    Punkt centrum(szerokosc / 2, wysokosc / 2);
+    dodajOrganizm(new Czlowiek(this, centrum));  // Człowiek startowo
 }
 
 Swiat::~Swiat() {
@@ -39,12 +42,12 @@ void Swiat::wykonajTure() {
 }
 
 void Swiat::rysujSwiat() {
-    std::vector<std::vector<char>> plansza(wysokosc, std::vector<char>(szerokosc, '.'));
+    std::vector<std::vector<std::string>> plansza(wysokosc, std::vector<std::string>(szerokosc, "."));
 
     for (Organizm* o : organizmy) {
         Punkt p = o->getPolozenie();
         if (p.y >= 0 && p.y < wysokosc && p.x >= 0 && p.x < szerokosc)
-            plansza[p.y][p.x] = o->rysowanie();
+            plansza[p.y][p.x] = o->getIkona();  // <-- tu używamy ikony (emoji/ASCII)
     }
 
     std::cout << "\n--- Tura: " << tura << " ---\n";
@@ -106,17 +109,30 @@ std::vector<Punkt> Swiat::getWolnePolaObok(const Punkt& p) const {
 }
 
 void Swiat::stworzOrganizm(const std::type_info& typ, const Punkt& p) {
-    if (typ == typeid(Wilk)) organizmy.push_back(new Wilk(this, p));
-    else if (typ == typeid(Owca)) organizmy.push_back(new Owca(this, p));
-    else if (typ == typeid(Lis)) organizmy.push_back(new Lis(this, p));
-    else if (typ == typeid(Zolw)) organizmy.push_back(new Zolw(this, p));
-    else if (typ == typeid(Antylopa)) organizmy.push_back(new Antylopa(this, p));
-    else if (typ == typeid(Trawa)) organizmy.push_back(new Trawa(this, p));
-    else if (typ == typeid(Guarana)) organizmy.push_back(new Guarana(this, p));
-    else if (typ == typeid(Mlecz)) organizmy.push_back(new Mlecz(this, p));
-    else if (typ == typeid(WilczeJagody)) organizmy.push_back(new WilczeJagody(this, p));
-    else if (typ == typeid(BarszczSosnowskiego)) organizmy.push_back(new BarszczSosnowskiego(this, p));
-    else if (typ == typeid(CyberOwca)) organizmy.push_back(new CyberOwca(this, p));
+    if (typ == typeid(Wilk))
+        organizmy.push_back(new Wilk(this, p));
+    else if (typ == typeid(Owca))
+        organizmy.push_back(new Owca(this, p));
+    else if (typ == typeid(Lis))
+        organizmy.push_back(new Lis(this, p));
+    else if (typ == typeid(Zolw))
+        organizmy.push_back(new Zolw(this, p));
+    else if (typ == typeid(Antylopa))
+        organizmy.push_back(new Antylopa(this, p));
+    else if (typ == typeid(Trawa))
+        organizmy.push_back(new Trawa(this, p));
+    else if (typ == typeid(Guarana))
+        organizmy.push_back(new Guarana(this, p));
+    else if (typ == typeid(Mlecz))
+        organizmy.push_back(new Mlecz(this, p));
+    else if (typ == typeid(WilczeJagody))
+        organizmy.push_back(new WilczeJagody(this, p));
+    else if (typ == typeid(BarszczSosnowskiego))
+        organizmy.push_back(new BarszczSosnowskiego(this, p));
+    else if (typ == typeid(CyberOwca))
+        organizmy.push_back(new CyberOwca(this, p));
+    else if (typ == typeid(Czlowiek))
+        organizmy.push_back(new Czlowiek(this, p));
 }
 
 void Swiat::dodajOrganizm(Organizm* org) {
@@ -139,3 +155,7 @@ void Swiat::dodajLog(const std::string& tekst) {
 int Swiat::getSzerokosc() const { return szerokosc; }
 int Swiat::getWysokosc() const { return wysokosc; }
 int Swiat::getTura() const { return tura; }
+
+const std::vector<Organizm*>& Swiat::getOrganizmy() const {
+    return organizmy;
+}
