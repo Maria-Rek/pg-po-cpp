@@ -1,5 +1,5 @@
-﻿#include "Antylopa.h"
-#include "Swiat.h"
+﻿#include "../Antylopa.h"
+#include "../Swiat.h"
 #include <cstdlib>
 
 Antylopa::Antylopa(Swiat* swiat, Punkt polozenie)
