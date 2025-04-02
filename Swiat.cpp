@@ -42,12 +42,14 @@ void Swiat::wykonajTure() {
 }
 
 void Swiat::rysujSwiat() {
-    std::vector<std::vector<std::string>> plansza(wysokosc, std::vector<std::string>(szerokosc, "."));
+    std::string pusty = USE_EMOJI ? u8"⬛" : ".";
+
+    std::vector<std::vector<std::string>> plansza(wysokosc, std::vector<std::string>(szerokosc, pusty));
 
     for (Organizm* o : organizmy) {
         Punkt p = o->getPolozenie();
         if (p.y >= 0 && p.y < wysokosc && p.x >= 0 && p.x < szerokosc)
-            plansza[p.y][p.x] = o->getIkona();  // <-- tu używamy ikony (emoji/ASCII)
+            plansza[p.y][p.x] = o->getIkona();
     }
 
     std::cout << "\n--- Tura: " << tura << " ---\n";
