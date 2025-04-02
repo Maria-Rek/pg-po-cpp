@@ -1,5 +1,5 @@
 ﻿#include "WilczeJagody.h"
-#include "Swiat.h"
+#include "../Swiat.h"
 
 WilczeJagody::WilczeJagody(Swiat* swiat, Punkt polozenie)
     : Roslina(USE_EMOJI ? u8"☠️" : "J", swiat, polozenie, 99) {
