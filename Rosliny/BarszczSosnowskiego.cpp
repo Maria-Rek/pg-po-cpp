@@ -1,7 +1,7 @@
 ﻿#include "BarszczSosnowskiego.h"
-#include "Swiat.h"
-#include "Zwierze.h"
-#include "CyberOwca.h"
+#include "../Swiat.h"
+#include "../Zwierze.h"
+#include "../Zwierzeta/CyberOwca.h"
 #include <cstdlib>
 #include <typeinfo>
 
