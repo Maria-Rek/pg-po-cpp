@@ -1,6 +1,6 @@
 ﻿#include "CyberOwca.h"
-#include "Swiat.h"
-#include "BarszczSosnowskiego.h"
+#include "../Swiat.h"
+#include "../Rosliny/BarszczSosnowskiego.h"
 #include <cstdlib>
 #include <cmath>
 #include <limits>
