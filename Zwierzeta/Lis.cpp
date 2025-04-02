@@ -1,5 +1,5 @@
 ﻿#include "Lis.h"
-#include "Swiat.h"
+#include "../Swiat.h"
 #include <cstdlib>
 
 Lis::Lis(Swiat* swiat, Punkt polozenie)
