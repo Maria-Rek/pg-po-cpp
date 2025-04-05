@@ -36,6 +36,8 @@ int main() {
     swiat.dodajOrganizm(new WilczeJagody(&swiat, Punkt(6, 6)));
     swiat.dodajOrganizm(new BarszczSosnowskiego(&swiat, Punkt(2, 4)));
     swiat.dodajOrganizm(new CyberOwca(&swiat, Punkt(1, 1)));
+    swiat.dodajOrganizm(new Czlowiek(&swiat, Punkt(swiat.getSzerokosc() / 2, swiat.getWysokosc() / 2)));
+
 
     // Symulacja 10 tur
     for (int i = 0; i < 10; ++i) {

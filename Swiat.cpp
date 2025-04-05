@@ -18,8 +18,7 @@
 
 Swiat::Swiat(int szerokosc, int wysokosc)
     : szerokosc(szerokosc), wysokosc(wysokosc), tura(1) {
-    Punkt centrum(szerokosc / 2, wysokosc / 2);
-    dodajOrganizm(new Czlowiek(this, centrum));  // Człowiek startowo
+    // Człowiek dodawany później z main.cpp – nie tu!
 }
 
 Swiat::~Swiat() {
@@ -49,9 +48,8 @@ void Swiat::rysujSwiat() {
     for (Organizm* o : organizmy) {
         Punkt p = o->getPolozenie();
         if (p.y >= 0 && p.y < wysokosc && p.x >= 0 && p.x < szerokosc) {
-            // Zasada przykrywania: zwierzęta nadpisują rośliny
             if (plansza[p.y][p.x] == pusty || o->getInicjatywa() > 0) {
-                plansza[p.y][p.x] = o->getIkona();
+                plansza[p.y][p.x] = o->getIkona();  // zwierzęta nadpisują rośliny
             }
         }
     }
@@ -119,6 +117,8 @@ std::vector<Punkt> Swiat::getWolnePolaObok(const Punkt& p) const {
 }
 
 void Swiat::stworzOrganizm(const std::type_info& typ, const Punkt& p) {
+    if (p.x < 0 || p.y < 0 || p.x >= szerokosc || p.y >= wysokosc) return;
+
     if (typ == typeid(Wilk))
         organizmy.push_back(new Wilk(this, p));
     else if (typ == typeid(Owca))
