@@ -1,4 +1,5 @@
-﻿#include "Czlowiek.h"
+﻿#pragma execution_character_set("utf-8")
+#include "Czlowiek.h"
 #include "Swiat.h"
 #include "Organizm.h"
 #include <iostream>

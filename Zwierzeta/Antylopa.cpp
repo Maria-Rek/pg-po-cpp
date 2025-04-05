@@ -1,4 +1,5 @@
-﻿#include "Antylopa.h"
+﻿#pragma execution_character_set("utf-8")
+#include "Antylopa.h"
 #include "../Swiat.h"
 #include <cstdlib>
 

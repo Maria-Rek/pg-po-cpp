@@ -1,4 +1,5 @@
-﻿#include "CyberOwca.h"
+﻿#pragma execution_character_set("utf-8")
+#include "CyberOwca.h"
 #include "../Swiat.h"
 #include "../Rosliny/BarszczSosnowskiego.h"
 #include <cstdlib>

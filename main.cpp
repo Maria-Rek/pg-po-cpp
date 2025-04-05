@@ -1,4 +1,4 @@
-﻿
+﻿#pragma execution_character_set("utf-8")
 #include "Swiat.h"
 #include "Zwierzeta/Wilk.h"
 #include "Zwierzeta/Owca.h"

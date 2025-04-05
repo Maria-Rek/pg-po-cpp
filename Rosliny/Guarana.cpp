@@ -1,4 +1,5 @@
-﻿#include "Guarana.h"
+﻿#pragma execution_character_set("utf-8")
+#include "Guarana.h"
 #include "../Swiat.h"
 
 Guarana::Guarana(Swiat* swiat, Punkt polozenie)

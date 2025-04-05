@@ -1,4 +1,5 @@
-﻿#include "BarszczSosnowskiego.h"
+﻿#pragma execution_character_set("utf-8")
+#include "BarszczSosnowskiego.h"
 #include "../Swiat.h"
 #include "../Zwierze.h"
 #include "../Zwierzeta/CyberOwca.h"
