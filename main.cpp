@@ -22,7 +22,7 @@ int main() {
 
     std::srand(static_cast<unsigned>(std::time(nullptr)));
 
-    Swiat swiat(10, 10);  // Plansza 10x10 (Człowiek na środku)
+    Swiat swiat(15, 15);  // Plansza 10x10 (Człowiek na środku)
 
     // Dodajemy organizmy testowe
     swiat.dodajOrganizm(new Wilk(&swiat, Punkt(4, 4)));

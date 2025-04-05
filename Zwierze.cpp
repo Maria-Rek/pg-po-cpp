@@ -58,8 +58,8 @@ void Zwierze::kolizja(Organizm* inny) {
     if (inny->getSila() <= sila) {
         Punkt jegoPozycja = inny->getPolozenie();
         swiat->dodajLog(nazwaA + " zabił " + nazwaB);
-        swiat->usunOrganizm(inny);
         polozenie = jegoPozycja;
+        swiat->usunOrganizm(inny);
     }
     else {
         swiat->dodajLog(nazwaA + " został zabity przez " + nazwaB);
