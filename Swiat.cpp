@@ -90,13 +90,17 @@ Organizm* Swiat::getOrganizmNa(const Punkt& p) const {
 
 std::vector<Punkt> Swiat::getSasiedniePola(const Punkt& p) const {
     std::vector<Punkt> pola;
-    const int dx[] = { -1, 1,  0, 0 };
-    const int dy[] = { 0, 0, -1, 1 };
 
-    for (int i = 0; i < 4; ++i) {
-        Punkt nowy(p.x + dx[i], p.y + dy[i]);
-        if (nowy.x >= 0 && nowy.x < szerokosc && nowy.y >= 0 && nowy.y < wysokosc)
-            pola.push_back(nowy);
+    for (int dx = -1; dx <= 1; ++dx) {
+        for (int dy = -1; dy <= 1; ++dy) {
+            if (dx == 0 && dy == 0) continue;
+
+            Punkt nowy(p.x + dx, p.y + dy);
+            if (nowy.x >= 0 && nowy.x < szerokosc &&
+                nowy.y >= 0 && nowy.y < wysokosc) {
+                pola.push_back(nowy);
+            }
+        }
     }
 
     return pola;
