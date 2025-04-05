@@ -48,8 +48,12 @@ void Swiat::rysujSwiat() {
 
     for (Organizm* o : organizmy) {
         Punkt p = o->getPolozenie();
-        if (p.y >= 0 && p.y < wysokosc && p.x >= 0 && p.x < szerokosc)
-            plansza[p.y][p.x] = o->getIkona();
+        if (p.y >= 0 && p.y < wysokosc && p.x >= 0 && p.x < szerokosc) {
+            // Zasada przykrywania: zwierzęta nadpisują rośliny
+            if (plansza[p.y][p.x] == pusty || o->getInicjatywa() > 0) {
+                plansza[p.y][p.x] = o->getIkona();
+            }
+        }
     }
 
     std::cout << "\n--- Tura: " << tura << " ---\n";
@@ -86,7 +90,7 @@ Organizm* Swiat::getOrganizmNa(const Punkt& p) const {
 
 std::vector<Punkt> Swiat::getSasiedniePola(const Punkt& p) const {
     std::vector<Punkt> pola;
-    const int dx[] = { -1, 1, 0, 0 };
+    const int dx[] = { -1, 1,  0, 0 };
     const int dy[] = { 0, 0, -1, 1 };
 
     for (int i = 0; i < 4; ++i) {

@@ -30,6 +30,13 @@ void Zwierze::akcja() {
 void Zwierze::kolizja(Organizm* inny) {
     if (!swiat || !inny) return;
 
+    //Nie atakujemy trawy ani mlecza — tylko je przykrywamy
+    if (inny->nazwa() == "Trawa" || inny->nazwa() == "Mlecz") {
+        polozenie = inny->getPolozenie();
+        swiat->dodajLog(nazwa() + " wszedł na " + inny->nazwa() + ", ale jej nie zjadł 🌿");
+        return;
+    }
+
     if (typeid(*this) == typeid(*inny)) {
         std::vector<Punkt> wolne = swiat->getWolnePolaObok(polozenie);
         if (!wolne.empty()) {

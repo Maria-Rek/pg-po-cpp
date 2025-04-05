@@ -1,4 +1,4 @@
-#pragma execution_character_set("utf-8")
+﻿#pragma execution_character_set("utf-8")
 #include "Roslina.h"
 #include "Swiat.h"
 #include <cstdlib>
@@ -17,7 +17,7 @@ void Roslina::akcja() {
         if (!wolne.empty()) {
             Punkt nowy = wolne[rand() % wolne.size()];
             swiat->stworzOrganizm(typeid(*this), nowy);
-            swiat->dodajLog(nazwa() + " rozsia�o si�");
+            swiat->dodajLog(nazwa() + " rozsiało się");
         }
     }
 
@@ -27,6 +27,13 @@ void Roslina::akcja() {
 void Roslina::kolizja(Organizm* inny) {
     if (!swiat || !inny) return;
 
-    swiat->dodajLog(nazwa() + " zosta�o zjedzone przez " + inny->nazwa());
+    // Trawa i Mlecz nie giną – są tylko przykrywane
+    if (nazwa() == "Trawa" || nazwa() == "Mlecz") {
+        swiat->dodajLog(nazwa() + " została przygnieciona przez " + inny->nazwa() + ", ale przetrwała 🌿");
+        return;
+    }
+
+    // Inne rośliny – klasyczna kolizja
+    swiat->dodajLog(nazwa() + " zostało zjedzone przez " + inny->nazwa());
     swiat->usunOrganizm(this);
 }
