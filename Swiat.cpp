@@ -18,7 +18,7 @@
 
 Swiat::Swiat(int szerokosc, int wysokosc)
     : szerokosc(szerokosc), wysokosc(wysokosc), tura(1) {
-    // Człowiek dodawany później z main.cpp – nie tu!
+    // Człowiek dodawany później z main.cpp
 }
 
 Swiat::~Swiat() {

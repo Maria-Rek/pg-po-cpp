@@ -17,7 +17,7 @@ std::string Czlowiek::nazwa() const {
 
 void Czlowiek::ustawSterowanie() {
     do {
-        std::cout << "[Czlowiek] Podaj kierunek ruchu (w/s/a/d): ";
+        std::cout << "[Człowiek] Podaj kierunek ruchu (w/s/a/d): ";
         std::cin >> kierunekRuchu;
         kierunekRuchu = std::tolower(kierunekRuchu);
     } while (kierunekRuchu != 'w' && kierunekRuchu != 's' && kierunekRuchu != 'a' && kierunekRuchu != 'd');
@@ -25,7 +25,7 @@ void Czlowiek::ustawSterowanie() {
     if (cooldown == 0) {
         char wybor;
         do {
-            std::cout << "[Czlowiek] Uzyc umiejetnosci specjalnej (zamrozenie)? (t/n): ";
+            std::cout << "[Człowiek] Czy mam użyć umiejętności specialnej (zamrożenie)? (t/n): ";
             std::cin >> wybor;
             wybor = std::tolower(wybor);
         } while (wybor != 't' && wybor != 'n');
@@ -34,7 +34,7 @@ void Czlowiek::ustawSterowanie() {
             specjalnaAktywna = true;
             zamrozWTejTurze = true;
             cooldown = 5;
-            swiat->dodajLog("Czlowiek aktywowal umiejetnosc: zamrozenie sasiadow ❄️");
+            swiat->dodajLog("Człowiek aktywował umiejętność: zamrożenie sąsiadów ❄️");
         }
     }
 }
@@ -48,7 +48,7 @@ void Czlowiek::akcja() {
             for (const Punkt& p : sasiednie) {
                 if (o->getPolozenie() == p) {
                     o->zwiekszWiek();
-                    swiat->dodajLog(o->nazwa() + " zostal zamrozony i nie wykonal akcji!");
+                    swiat->dodajLog(o->nazwa() + " został zamrożony i nie wykonał akcji!");
                 }
             }
         }
@@ -67,7 +67,7 @@ void Czlowiek::akcja() {
     Punkt nowaPozycja(polozenie.x + dx, polozenie.y + dy);
     if (nowaPozycja.x < 0 || nowaPozycja.y < 0 ||
         nowaPozycja.x >= swiat->getSzerokosc() || nowaPozycja.y >= swiat->getWysokosc()) {
-        swiat->dodajLog("Czlowiek chcial wyjsc poza mape!");
+        swiat->dodajLog("Człowiek chciał wyjść poza mape!");
     }
     else {
         Organizm* cel = swiat->getOrganizmNa(nowaPozycja);

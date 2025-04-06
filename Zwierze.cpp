@@ -67,13 +67,32 @@ void Zwierze::kolizja(Organizm* inny) {
 
     std::string nazwaA = nazwa();
     std::string nazwaB = inny->nazwa();
+    int silaA = getSila();
+    int silaB = inny->getSila();
 
-    if (inny->getSila() <= sila) {
+    if (silaA == silaB) {
+        if (getWiek() > inny->getWiek()) {
+            Punkt jegoPozycja = inny->getPolozenie();
+            swiat->dodajLog(nazwaB + " został zabity przez " + nazwaA + " (starszy organizm wygrał)");
+            polozenie = jegoPozycja;
+            swiat->usunOrganizm(inny);
+        }
+        else if (getWiek() < inny->getWiek()) {
+            swiat->dodajLog(nazwaA + " został zabity przez " + nazwaB + " (starszy organizm wygrał)");
+            swiat->usunOrganizm(this);
+        }
+        else {
+            swiat->dodajLog(nazwaA + " i " + nazwaB + " mają tą samą siłę i wiek – żaden nie zyskał przewagi");
+        }
+        return;
+    }
+
+    if (silaB <= silaA) {
         Punkt jegoPozycja = inny->getPolozenie();
         swiat->dodajLog(nazwaB + " został zabity przez " + nazwaA);
 
         // DEBUG: log siły zwycięzcy
-        //swiat->dodajLog("Siła " + nazwaA + ": " + std::to_string(sila));
+        //swiat->dodajLog("Siła " + nazwaA + ": " + std::to_string(silaA));
 
         polozenie = jegoPozycja;
         swiat->usunOrganizm(inny);
@@ -82,7 +101,7 @@ void Zwierze::kolizja(Organizm* inny) {
         swiat->dodajLog(nazwaA + " został zabity przez " + nazwaB);
 
         // DEBUG: log siły przeciwnika
-        //swiat->dodajLog("Siła " + nazwaB + ": " + std::to_string(inny->getSila()));
+        //swiat->dodajLog("Siła " + nazwaB + ": " + std::to_string(silaB));
 
         swiat->usunOrganizm(this);
     }
