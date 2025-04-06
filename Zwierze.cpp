@@ -1,7 +1,7 @@
 ﻿#pragma execution_character_set("utf-8")
 #include "Zwierze.h"
 #include "Swiat.h"
-#include "Roslina.h" // potrzebne do dynamic_cast
+#include "Roslina.h"
 #include <cstdlib>
 #include <typeinfo>
 
@@ -48,6 +48,9 @@ void Zwierze::kolizja(Organizm* inny) {
             swiat->stworzOrganizm(typeid(*this), dzieckoPozycja);
             swiat->dodajLog(nazwa() + " rozmnożył się");
         }
+        else {
+            swiat->dodajLog(nazwa() + " próbował się rozmnożyć, ale nie było wolnego miejsca.");
+        }
         return;
     }
 
@@ -56,7 +59,7 @@ void Zwierze::kolizja(Organizm* inny) {
         return;
     }
 
-    // 🌿 Jeśli inny to roślina – pozwól jej samej obsłużyć kolizję
+    //Jeśli inny to roślina – pozwól jej samej obsłużyć kolizję
     if (dynamic_cast<Roslina*>(inny)) {
         inny->kolizja(this);
         return;
