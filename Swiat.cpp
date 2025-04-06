@@ -1,8 +1,5 @@
-﻿#include "Swiat.h"
-#include <iostream>
-#include <algorithm>
-#include <typeinfo>
-
+﻿#pragma execution_character_set("utf-8")
+#include "Swiat.h"
 #include "Zwierzeta/Wilk.h"
 #include "Zwierzeta/Owca.h"
 #include "Zwierzeta/Lis.h"
@@ -15,6 +12,11 @@
 #include "Rosliny/BarszczSosnowskiego.h"
 #include "Zwierzeta/CyberOwca.h"
 #include "Czlowiek.h"
+
+#include <iostream>
+#include <algorithm>
+#include <string>
+#include <cctype>
 
 Swiat::Swiat(int szerokosc, int wysokosc)
     : szerokosc(szerokosc), wysokosc(wysokosc), tura(1) {
@@ -64,7 +66,33 @@ void Swiat::rysujSwiat() {
 
     std::cout << "\n[Zdarzenia]:\n";
     for (const std::string& log : logi) {
-        std::cout << "- " << log << '\n';
+        std::string lowerLog = log;
+        std::transform(lowerLog.begin(), lowerLog.end(), lowerLog.begin(), [](unsigned char c) {
+            return std::tolower(c);
+            });
+
+        if (lowerLog.find("zabity") != std::string::npos ||
+            lowerLog.find("zginął") != std::string::npos ||
+            lowerLog.find("zjedz") != std::string::npos ||
+            (lowerLog.find("barszcz sosnowskiego") != std::string::npos && lowerLog.find("zabił") != std::string::npos)) {
+            std::cout << "\033[1;31m";  // czerwony
+        }
+        else if (lowerLog.find("zamrożon") != std::string::npos ||
+            lowerLog.find("zamrożenie") != std::string::npos) {
+            std::cout << "\033[1;36m";  // jasny niebieski)
+        }
+        else if (lowerLog.find("rozsiał") != std::string::npos ||
+            lowerLog.find("rozsiało") != std::string::npos) {
+            std::cout << "\033[1;32m";  // zielony
+        }
+        else if (lowerLog.find("rozmnożył") != std::string::npos) {
+            std::cout << "\033[1;33m";  // pomarańczowy
+        }
+        else {
+            std::cout << "\033[1;35m";  // różowy
+        }
+
+        std::cout << "- " << log << "\033[0m\n";
     }
     logi.clear();
 }
