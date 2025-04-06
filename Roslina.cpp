@@ -1,4 +1,5 @@
-﻿#include "Roslina.h"
+﻿#pragma execution_character_set("utf-8")
+#include "Roslina.h"
 #include "Swiat.h"
 #include <cstdlib>
 #include <typeinfo>

@@ -71,22 +71,23 @@ void Swiat::rysujSwiat() {
             return std::tolower(c);
             });
 
-        if (lowerLog.find("zabity") != std::string::npos ||
+        if (lowerLog.find("człowiek użył umiejętności") != std::string::npos ||
+            lowerLog.find("spalony") != std::string::npos) {
+            std::cout << "\033[1;33m";  // pomarańczowy
+        }
+        else if (lowerLog.find("zabity") != std::string::npos ||
             lowerLog.find("zginął") != std::string::npos ||
             lowerLog.find("zjedz") != std::string::npos ||
             (lowerLog.find("barszcz sosnowskiego") != std::string::npos && lowerLog.find("zabił") != std::string::npos)) {
             std::cout << "\033[1;31m";  // czerwony
         }
-        else if (lowerLog.find("zamrożon") != std::string::npos ||
-            lowerLog.find("zamrożenie") != std::string::npos) {
+        else if (lowerLog.find("rozmnożył") != std::string::npos ||
+            lowerLog.find("próbował się rozmnożyć") != std::string::npos) {
             std::cout << "\033[1;36m";  // jasny niebieski
         }
         else if (lowerLog.find("rozsiał") != std::string::npos ||
             lowerLog.find("rozsiało") != std::string::npos) {
             std::cout << "\033[1;32m";  // zielony
-        }
-        else if (lowerLog.find("rozmnożył") != std::string::npos) {
-            std::cout << "\033[1;33m";  // pomarańczowy
         }
         else {
             std::cout << "\033[1;35m";  // różowy

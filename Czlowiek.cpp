@@ -9,7 +9,7 @@
 
 Czlowiek::Czlowiek(Swiat* swiat, Punkt polozenie)
     : Zwierze(USE_EMOJI ? u8"🚹" : "@", swiat, polozenie, 5, 4),
-    specjalnaAktywna(false), cooldown(0), kierunekRuchu(' '), zamrozWTejTurze(false) {
+    specjalnaAktywna(false), cooldown(0), kierunekRuchu(' ') {
 }
 
 std::string Czlowiek::nazwa() const {
@@ -42,16 +42,15 @@ void Czlowiek::ustawSterowanie() {
     if (cooldown == 0) {
         char wybor;
         do {
-            std::cout << "[Człowiek] Czy mam użyć umiejętności specjalnej (zamrożenie)? (t/n): ";
+            std::cout << "[Człowiek] Czy chcesz użyć umiejętności specjalnej (całopalenie)? (t/n): ";
             std::cin >> wybor;
             wybor = std::tolower(wybor);
         } while (wybor != 't' && wybor != 'n');
 
         if (wybor == 't') {
             specjalnaAktywna = true;
-            zamrozWTejTurze = true;
             cooldown = 5;
-            swiat->dodajLog("Człowiek aktywował umiejętność: zamrożenie sąsiadów ❄️");
+            swiat->dodajLog("Człowiek użył umiejętności: całopalenie 🔥");
         }
     }
 }
@@ -59,17 +58,15 @@ void Czlowiek::ustawSterowanie() {
 void Czlowiek::akcja() {
     ustawSterowanie();
 
-    if (specjalnaAktywna && zamrozWTejTurze) {
+    if (specjalnaAktywna) {
         std::vector<Punkt> sasiednie = swiat->getSasiedniePola(polozenie);
-        for (Organizm* o : swiat->getOrganizmy()) {
-            for (const Punkt& p : sasiednie) {
-                if (o->getPolozenie() == p) {
-                    o->zwiekszWiek();
-                    swiat->dodajLog(o->nazwa() + " został zamrożony i nie wykonał akcji!");
-                }
+        for (const Punkt& p : sasiednie) {
+            Organizm* o = swiat->getOrganizmNa(p);
+            if (o && o != this) {
+                swiat->dodajLog(o->nazwa() + " został spalony przez Człowieka 🔥");
+                swiat->usunOrganizm(o);
             }
         }
-        zamrozWTejTurze = false;
         specjalnaAktywna = false;
     }
 

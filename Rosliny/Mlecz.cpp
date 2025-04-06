@@ -1,4 +1,5 @@
-﻿#include "Mlecz.h"
+﻿#pragma execution_character_set("utf-8")
+#include "Mlecz.h"
 #include "../Swiat.h"
 #include <cstdlib>
 #include <typeinfo>
