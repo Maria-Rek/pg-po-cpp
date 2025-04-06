@@ -1,6 +1,7 @@
 ﻿#pragma execution_character_set("utf-8")
 #include "Antylopa.h"
 #include "../Swiat.h"
+#include "../Roslina.h"
 #include <cstdlib>
 
 Antylopa::Antylopa(Swiat* swiat, Punkt polozenie)
@@ -43,6 +44,12 @@ void Antylopa::akcja() {
 
 void Antylopa::kolizja(Organizm* inny) {
     if (!swiat || !inny) return;
+
+    //Antylopa nie ucieka przed roślinami
+    if (dynamic_cast<Roslina*>(inny)) {
+        Zwierze::kolizja(inny);
+        return;
+    }
 
     if (rand() % 2 == 0) {
         std::vector<Punkt> wolne = swiat->getWolnePolaObok(polozenie);
