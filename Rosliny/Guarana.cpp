@@ -14,8 +14,12 @@ void Guarana::kolizja(Organizm* inny) {
     if (swiat && inny) {
         int nowaSila = inny->getSila() + 3;
         inny->setSila(nowaSila);
-
+        inny->setPolozenie(polozenie);
         swiat->dodajLog(nazwa() + " została zjedzona przez " + inny->nazwa() + " (zyskał +3 siły)");
+
+        // DEBUG: log nowej siły
+        //swiat->dodajLog(inny->nazwa() + " – nowa siła: " + std::to_string(nowaSila));
+
         swiat->usunOrganizm(this);
     }
 }

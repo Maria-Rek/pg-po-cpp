@@ -31,10 +31,15 @@ void BarszczSosnowskiego::akcja() {
 void BarszczSosnowskiego::kolizja(Organizm* inny) {
     if (!inny || swiat->getOrganizmNa(inny->getPolozenie()) != inny) return;
 
-    swiat->dodajLog(inny->nazwa() + " zjadł " + nazwa() + " i zginął!");
-    swiat->usunOrganizm(inny);
-
-    if (swiat->getOrganizmNa(polozenie) == this) {
+    if (dynamic_cast<CyberOwca*>(inny)) {
+        swiat->dodajLog(inny->nazwa() + " zjadł " + nazwa() + " i przetrwał!");
         swiat->usunOrganizm(this);
+    }
+    else {
+        swiat->dodajLog(inny->nazwa() + " zjadł " + nazwa() + " i zginął!");
+        swiat->usunOrganizm(inny);
+        if (swiat->getOrganizmNa(polozenie) == this) {
+            swiat->usunOrganizm(this);
+        }
     }
 }
