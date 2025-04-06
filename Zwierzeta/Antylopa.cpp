@@ -1,5 +1,4 @@
-﻿#pragma execution_character_set("utf-8")
-#include "Antylopa.h"
+﻿#include "Antylopa.h"
 #include "../Swiat.h"
 #include "../Roslina.h"
 #include <cstdlib>
@@ -17,12 +16,12 @@ void Antylopa::akcja() {
     std::vector<Punkt> dalsze;
 
     for (const Punkt& p : sasiednie) {
-        int dx = p.x - polozenie.x;
-        int dy = p.y - polozenie.y;
-        Punkt dalej(p.x + dx, p.y + dy);
+        int dx = p.getX() - polozenie.getX();
+        int dy = p.getY() - polozenie.getY();
+        Punkt dalej(p.getX() + dx, p.getY() + dy);
 
-        if (dalej.x >= 0 && dalej.x < swiat->getSzerokosc() &&
-            dalej.y >= 0 && dalej.y < swiat->getWysokosc()) {
+        if (dalej.getX() >= 0 && dalej.getX() < swiat->getSzerokosc() &&
+            dalej.getY() >= 0 && dalej.getY() < swiat->getWysokosc()) {
             dalsze.push_back(dalej);
         }
     }
@@ -45,7 +44,6 @@ void Antylopa::akcja() {
 void Antylopa::kolizja(Organizm* inny) {
     if (!swiat || !inny) return;
 
-    //Antylopa nie ucieka przed roślinami
     if (dynamic_cast<Roslina*>(inny)) {
         Zwierze::kolizja(inny);
         return;

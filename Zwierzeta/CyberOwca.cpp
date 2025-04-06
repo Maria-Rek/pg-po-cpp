@@ -1,5 +1,4 @@
-﻿#pragma execution_character_set("utf-8")
-#include "CyberOwca.h"
+﻿#include "CyberOwca.h"
 #include "../Swiat.h"
 #include "../Rosliny/BarszczSosnowskiego.h"
 #include <cstdlib>
@@ -18,15 +17,15 @@ std::string CyberOwca::nazwa() const {
 void CyberOwca::akcja() {
     Punkt cel = znajdzNajblizszyBarszcz();
 
-    if (cel.x == -1 && cel.y == -1) {
+    if (cel.getX() == -1 && cel.getY() == -1) {
         swiat->dodajLog(nazwa() + " rozglądała się, ale nie znalazła Barszczu Sosnowskiego.");
         return;
     }
 
-    int dx = (cel.x > polozenie.x) ? 1 : (cel.x < polozenie.x) ? -1 : 0;
-    int dy = (cel.y > polozenie.y) ? 1 : (cel.y < polozenie.y) ? -1 : 0;
+    int dx = (cel.getX() > polozenie.getX()) ? 1 : (cel.getX() < polozenie.getX()) ? -1 : 0;
+    int dy = (cel.getY() > polozenie.getY()) ? 1 : (cel.getY() < polozenie.getY()) ? -1 : 0;
 
-    Punkt nowaPozycja(polozenie.x + dx, polozenie.y + dy);
+    Punkt nowaPozycja(polozenie.getX() + dx, polozenie.getY() + dy);
 
     if (nowaPozycja == polozenie)
         return;
@@ -61,5 +60,5 @@ Punkt CyberOwca::znajdzNajblizszyBarszcz() const {
 }
 
 int CyberOwca::dystans(const Punkt& a, const Punkt& b) const {
-    return std::abs(a.x - b.x) + std::abs(a.y - b.y);
+    return std::abs(a.getX() - b.getX()) + std::abs(a.getY() - b.getY());
 }

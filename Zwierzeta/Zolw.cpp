@@ -1,5 +1,4 @@
-﻿#pragma execution_character_set("utf-8")
-#include "Zolw.h"
+﻿#include "Zolw.h"
 #include "../Swiat.h"
 #include <cstdlib>
 

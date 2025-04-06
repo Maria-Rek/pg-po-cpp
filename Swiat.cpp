@@ -49,9 +49,9 @@ void Swiat::rysujSwiat() {
 
     for (Organizm* o : organizmy) {
         Punkt p = o->getPolozenie();
-        if (p.y >= 0 && p.y < wysokosc && p.x >= 0 && p.x < szerokosc) {
-            if (plansza[p.y][p.x] == pusty || o->getInicjatywa() > 0) {
-                plansza[p.y][p.x] = o->getIkona();  // zwierzęta nadpisują rośliny
+        if (p.getY() >= 0 && p.getY() < wysokosc && p.getX() >= 0 && p.getX() < szerokosc) {
+            if (plansza[p.getY()][p.getX()] == pusty || o->getInicjatywa() > 0) {
+                plansza[p.getY()][p.getX()] = o->getIkona();  // zwierzęta nadpisują rośliny
             }
         }
     }
@@ -79,7 +79,7 @@ void Swiat::rysujSwiat() {
         }
         else if (lowerLog.find("zamrożon") != std::string::npos ||
             lowerLog.find("zamrożenie") != std::string::npos) {
-            std::cout << "\033[1;36m";  // jasny niebieski)
+            std::cout << "\033[1;36m";  // jasny niebieski
         }
         else if (lowerLog.find("rozsiał") != std::string::npos ||
             lowerLog.find("rozsiało") != std::string::npos) {
@@ -94,6 +94,7 @@ void Swiat::rysujSwiat() {
 
         std::cout << "- " << log << "\033[0m\n";
     }
+
     logi.clear();
 }
 
@@ -121,9 +122,9 @@ std::vector<Punkt> Swiat::getSasiedniePola(const Punkt& p) const {
         for (int dy = -1; dy <= 1; ++dy) {
             if (dx == 0 && dy == 0) continue;
 
-            Punkt nowy(p.x + dx, p.y + dy);
-            if (nowy.x >= 0 && nowy.x < szerokosc &&
-                nowy.y >= 0 && nowy.y < wysokosc) {
+            Punkt nowy(p.getX() + dx, p.getY() + dy);
+            if (nowy.getX() >= 0 && nowy.getX() < szerokosc &&
+                nowy.getY() >= 0 && nowy.getY() < wysokosc) {
                 pola.push_back(nowy);
             }
         }
@@ -145,7 +146,7 @@ std::vector<Punkt> Swiat::getWolnePolaObok(const Punkt& p) const {
 }
 
 void Swiat::stworzOrganizm(const std::type_info& typ, const Punkt& p) {
-    if (p.x < 0 || p.y < 0 || p.x >= szerokosc || p.y >= wysokosc) return;
+    if (p.getX() < 0 || p.getY() < 0 || p.getX() >= szerokosc || p.getY() >= wysokosc) return;
 
     if (typ == typeid(Wilk))
         organizmy.push_back(new Wilk(this, p));

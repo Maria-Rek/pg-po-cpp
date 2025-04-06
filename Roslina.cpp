@@ -1,5 +1,4 @@
-﻿#pragma execution_character_set("utf-8")
-#include "Roslina.h"
+﻿#include "Roslina.h"
 #include "Swiat.h"
 #include <cstdlib>
 #include <typeinfo>
@@ -27,13 +26,11 @@ void Roslina::akcja() {
 void Roslina::kolizja(Organizm* inny) {
     if (!swiat || !inny) return;
 
-    // Trawa i Mlecz nie giną – są tylko przykrywane
     if (nazwa() == "Trawa" || nazwa() == "Mlecz") {
         swiat->dodajLog(nazwa() + " została przygnieciona przez " + inny->nazwa() + ", ale przetrwała");
         return;
     }
 
-    // Inne rośliny – klasyczna kolizja
     swiat->dodajLog(nazwa() + " zostało zjedzone przez " + inny->nazwa());
     swiat->usunOrganizm(this);
 }

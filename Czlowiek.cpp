@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cctype>
 #include <vector>
+#include <conio.h>
 
 Czlowiek::Czlowiek(Swiat* swiat, Punkt polozenie)
     : Zwierze(USE_EMOJI ? u8"🚹" : "@", swiat, polozenie, 5, 4),
@@ -16,16 +17,32 @@ std::string Czlowiek::nazwa() const {
 }
 
 void Czlowiek::ustawSterowanie() {
-    do {
-        std::cout << "[Człowiek] Podaj kierunek ruchu (w/s/a/d): ";
-        std::cin >> kierunekRuchu;
-        kierunekRuchu = std::tolower(kierunekRuchu);
-    } while (kierunekRuchu != 'w' && kierunekRuchu != 's' && kierunekRuchu != 'a' && kierunekRuchu != 'd');
+    std::cout << "[Człowiek] Wciśnij strzałkę kierunkową (↑ ↓ ← →): " << std::endl;
+
+    int key = _getch();
+    if (key == 224) {
+        int arrow = _getch();
+        switch (arrow) {
+        case 72: kierunekRuchu = 'w'; break;
+        case 80: kierunekRuchu = 's'; break;
+        case 75: kierunekRuchu = 'a'; break;
+        case 77: kierunekRuchu = 'd'; break;
+        default:
+            std::cout << "\n[!] Nieprawidłowy klawisz. Spróbuj ponownie.\n";
+            ustawSterowanie();
+            return;
+        }
+    }
+    else {
+        std::cout << "\n[!] Proszę użyć strzałek.\n";
+        ustawSterowanie();
+        return;
+    }
 
     if (cooldown == 0) {
         char wybor;
         do {
-            std::cout << "[Człowiek] Czy mam użyć umiejętności specialnej (zamrożenie)? (t/n): ";
+            std::cout << "[Człowiek] Czy mam użyć umiejętności specjalnej (zamrożenie)? (t/n): ";
             std::cin >> wybor;
             wybor = std::tolower(wybor);
         } while (wybor != 't' && wybor != 'n');
@@ -64,10 +81,10 @@ void Czlowiek::akcja() {
     case 'd': dx = 1; break;
     }
 
-    Punkt nowaPozycja(polozenie.x + dx, polozenie.y + dy);
-    if (nowaPozycja.x < 0 || nowaPozycja.y < 0 ||
-        nowaPozycja.x >= swiat->getSzerokosc() || nowaPozycja.y >= swiat->getWysokosc()) {
-        swiat->dodajLog("Człowiek chciał wyjść poza mape!");
+    Punkt nowaPozycja(polozenie.getX() + dx, polozenie.getY() + dy);
+    if (nowaPozycja.getX() < 0 || nowaPozycja.getY() < 0 ||
+        nowaPozycja.getX() >= swiat->getSzerokosc() || nowaPozycja.getY() >= swiat->getWysokosc()) {
+        swiat->dodajLog("Człowiek chciał wyjść poza mapę!");
     }
     else {
         Organizm* cel = swiat->getOrganizmNa(nowaPozycja);
