@@ -3,9 +3,6 @@
 #include "../Zwierze.h"
 
 class Zolw : public Zwierze {
-private:
-    int ostatniRuch;
-
 public:
     Zolw(Swiat* swiat, Punkt polozenie);
     virtual ~Zolw() = default;
