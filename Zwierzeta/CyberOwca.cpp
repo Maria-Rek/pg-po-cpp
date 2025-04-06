@@ -19,7 +19,7 @@ void CyberOwca::akcja() {
     Punkt cel = znajdzNajblizszyBarszcz();
 
     if (cel.x == -1 && cel.y == -1) {
-        swiat->dodajLog(nazwa() + " nie znalazła Barszczu Sosnowskiego");
+        swiat->dodajLog(nazwa() + " rozglądała się, ale nie znalazła Barszczu Sosnowskiego.");
         return;
     }
 

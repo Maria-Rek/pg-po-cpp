@@ -33,7 +33,7 @@ void Zwierze::kolizja(Organizm* inny) {
     //Nie atakujemy trawy ani mlecza — tylko je przykrywamy
     if (inny->nazwa() == "Trawa" || inny->nazwa() == "Mlecz") {
         polozenie = inny->getPolozenie();
-        swiat->dodajLog(nazwa() + " wszedł na " + inny->nazwa() + ", ale jej nie zjadł 🌿");
+        swiat->dodajLog(nazwa() + " wszedł na " + inny->nazwa() + ", ale jej nie zjadł");
         return;
     }
 
@@ -57,7 +57,7 @@ void Zwierze::kolizja(Organizm* inny) {
 
     if (inny->getSila() <= sila) {
         Punkt jegoPozycja = inny->getPolozenie();
-        swiat->dodajLog(nazwaA + " zabił " + nazwaB);
+        swiat->dodajLog(nazwaB + " został zabity przez " + nazwaA);
         polozenie = jegoPozycja;
         swiat->usunOrganizm(inny);
     }

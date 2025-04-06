@@ -29,7 +29,7 @@ void Roslina::kolizja(Organizm* inny) {
 
     // Trawa i Mlecz nie giną – są tylko przykrywane
     if (nazwa() == "Trawa" || nazwa() == "Mlecz") {
-        swiat->dodajLog(nazwa() + " została przygnieciona przez " + inny->nazwa() + ", ale przetrwała 🌿");
+        swiat->dodajLog(nazwa() + " została przygnieciona przez " + inny->nazwa() + ", ale przetrwała");
         return;
     }
 
