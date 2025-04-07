@@ -57,6 +57,9 @@
     <ClCompile Include="Zwierzeta\Wilk.cpp" />
     <ClCompile Include="Zwierzeta\Zolw.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Zapis\save.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
