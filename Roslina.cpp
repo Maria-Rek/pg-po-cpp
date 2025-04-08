@@ -3,6 +3,7 @@
 #include "Swiat.h"
 #include <cstdlib>
 #include <typeinfo>
+#include <iostream> 
 
 Roslina::Roslina(const std::string& ikona, Swiat* swiat, Punkt polozenie, int sila)
     : Organizm(swiat, polozenie, sila, 0) {
@@ -34,4 +35,14 @@ void Roslina::kolizja(Organizm* inny) {
 
     swiat->dodajLog(nazwa() + " zostało zjedzone przez " + inny->nazwa());
     swiat->usunOrganizm(this);
+}
+
+
+void Roslina::zapisz(std::ostream& out) const {
+    out << nazwa() << " "
+        << polozenie.getX() << " "
+        << polozenie.getY() << " "
+        << sila << " "
+        << inicjatywa << " "
+        << wiek << std::endl;
 }

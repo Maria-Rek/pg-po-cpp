@@ -9,4 +9,6 @@ public:
     virtual void akcja() override;
     virtual void kolizja(Organizm* inny) override;
     virtual std::string nazwa() const = 0;
+
+    virtual void zapisz(std::ostream& out) const override;
 };

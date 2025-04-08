@@ -16,6 +16,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <string>
 
 int main() {
     system("chcp 65001");
@@ -23,34 +24,59 @@ int main() {
 
     Swiat swiat(10, 10);
 
-    //Rośliny
-    swiat.dodajOrganizm(new Trawa(&swiat, Punkt(1, 1)));
-    swiat.dodajOrganizm(new Trawa(&swiat, Punkt(8, 2)));
-    swiat.dodajOrganizm(new Mlecz(&swiat, Punkt(5, 5)));
-    swiat.dodajOrganizm(new Guarana(&swiat, Punkt(3, 4)));
-    swiat.dodajOrganizm(new WilczeJagody(&swiat, Punkt(2, 8)));
-    swiat.dodajOrganizm(new BarszczSosnowskiego(&swiat, Punkt(6, 2)));
+    
+    std::cout << "Czy chcesz wczytać zapis gry z pliku? (t/n): ";
+    char wybor;
+    std::cin >> wybor;
+    std::cin.ignore();
 
-    //Zwierzęta
-    swiat.dodajOrganizm(new Wilk(&swiat, Punkt(4, 4)));
-    swiat.dodajOrganizm(new Wilk(&swiat, Punkt(7, 3)));
-    swiat.dodajOrganizm(new Owca(&swiat, Punkt(6, 4)));
-    swiat.dodajOrganizm(new Owca(&swiat, Punkt(1, 5)));
-    swiat.dodajOrganizm(new Lis(&swiat, Punkt(2, 2)));
-    swiat.dodajOrganizm(new Zolw(&swiat, Punkt(3, 6)));
-    swiat.dodajOrganizm(new Antylopa(&swiat, Punkt(7, 7)));
-    swiat.dodajOrganizm(new Antylopa(&swiat, Punkt(6, 8)));
-    swiat.dodajOrganizm(new CyberOwca(&swiat, Punkt(0, 9)));
+    if (wybor == 't' || wybor == 'T') {
+        swiat.wczytajStanZPliku("Zapis/save.txt");  //load
+    }
+    else {
+        //Rośliny
+        swiat.dodajOrganizm(new Trawa(&swiat, Punkt(1, 1)));
+        swiat.dodajOrganizm(new Trawa(&swiat, Punkt(8, 2)));
+        swiat.dodajOrganizm(new Mlecz(&swiat, Punkt(5, 5)));
+        swiat.dodajOrganizm(new Guarana(&swiat, Punkt(3, 4)));
+        swiat.dodajOrganizm(new WilczeJagody(&swiat, Punkt(2, 8)));
+        swiat.dodajOrganizm(new BarszczSosnowskiego(&swiat, Punkt(6, 2)));
 
+        //Zwierzęta
+        swiat.dodajOrganizm(new Wilk(&swiat, Punkt(4, 4)));
+        swiat.dodajOrganizm(new Wilk(&swiat, Punkt(7, 3)));
+        swiat.dodajOrganizm(new Owca(&swiat, Punkt(6, 4)));
+        swiat.dodajOrganizm(new Owca(&swiat, Punkt(1, 5)));
+        swiat.dodajOrganizm(new Lis(&swiat, Punkt(2, 2)));
+        swiat.dodajOrganizm(new Zolw(&swiat, Punkt(3, 6)));
+        swiat.dodajOrganizm(new Antylopa(&swiat, Punkt(7, 7)));
+        swiat.dodajOrganizm(new Antylopa(&swiat, Punkt(6, 8)));
+        swiat.dodajOrganizm(new CyberOwca(&swiat, Punkt(0, 9)));
 
-    swiat.dodajOrganizm(new Czlowiek(&swiat, Punkt(swiat.getSzerokosc() / 2, swiat.getWysokosc() / 2)));
+        swiat.dodajOrganizm(new Czlowiek(&swiat, Punkt(swiat.getSzerokosc() / 2, swiat.getWysokosc() / 2)));
+    }
 
-
-    for (int i = 0; i < 10; ++i) {
+    // Główna pętla
+    while (true) {
         swiat.rysujSwiat();
-        swiat.wykonajTure();
-        std::cout << "\nNaciśnij Enter, aby przejść do następnej tury...";
-        std::cin.get();
+
+        std::cout << "\n[ENTER] – następna tura | [z] – zapisz | [w] – wczytaj | [q] – wyjdź\n> ";
+        std::string akcja;
+        std::getline(std::cin, akcja);
+
+        if (akcja.empty()) {
+            swiat.wykonajTure();
+        }
+        else if (akcja == "z" || akcja == "Z") {
+            swiat.zapiszStanDoPliku("Zapis/save.txt");
+        }
+        else if (akcja == "w" || akcja == "W") {
+            swiat.wczytajStanZPliku("Zapis/save.txt"); //load
+        }
+        else if (akcja == "q" || akcja == "Q") {
+            std::cout << "Zamykam grę...\n";
+            break;
+        }
     }
 
     return 0;

@@ -3,6 +3,7 @@
 
 #include "Punkt.h"
 #include <string>
+#include <ostream>
 
 class Swiat;
 
@@ -34,4 +35,6 @@ public:
     std::string getIkona() const;
 
     virtual bool czyOdbilAtak(Organizm* atakujacy) const;
+
+    virtual void zapisz(std::ostream& out) const = 0;
 };

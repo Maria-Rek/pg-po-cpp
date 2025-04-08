@@ -41,4 +41,8 @@ public:
     int getWysokosc() const;
     int getTura() const;
     const vector<Organizm*>& getOrganizmy() const;
+
+
+    void zapiszStanDoPliku(const string& nazwaPliku);
+    void wczytajStanZPliku(const string& nazwaPliku);
 };

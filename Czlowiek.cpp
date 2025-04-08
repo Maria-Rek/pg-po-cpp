@@ -6,6 +6,7 @@
 #include <cctype>
 #include <vector>
 #include <conio.h>
+#include <ostream>  // potrzebne dla zapisu
 
 Czlowiek::Czlowiek(Swiat* swiat, Punkt polozenie)
     : Zwierze(USE_EMOJI ? u8"🚹" : "@", swiat, polozenie, 5, 4),
@@ -14,6 +15,14 @@ Czlowiek::Czlowiek(Swiat* swiat, Punkt polozenie)
 
 std::string Czlowiek::nazwa() const {
     return "Czlowiek";
+}
+
+int Czlowiek::getCooldown() const {
+    return cooldown;
+}
+
+void Czlowiek::setCooldown(int cooldown) {
+    this->cooldown = cooldown;
 }
 
 void Czlowiek::ustawSterowanie() {
@@ -95,4 +104,15 @@ void Czlowiek::akcja() {
         cooldown--;
 
     zwiekszWiek();
+}
+
+
+void Czlowiek::zapisz(std::ostream& out) const {
+    out << nazwa() << " "
+        << polozenie.getX() << " "
+        << polozenie.getY() << " "
+        << sila << " "
+        << inicjatywa << " "
+        << wiek << " "
+        << cooldown << std::endl;
 }

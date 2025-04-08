@@ -4,6 +4,7 @@
 #include "Roslina.h"
 #include <cstdlib>
 #include <typeinfo>
+#include <iostream>
 
 Zwierze::Zwierze(std::string ikona, Swiat* swiat, Punkt polozenie, int sila, int inicjatywa)
     : Organizm(swiat, polozenie, sila, inicjatywa) {
@@ -105,4 +106,13 @@ void Zwierze::kolizja(Organizm* inny) {
 
         swiat->usunOrganizm(this);
     }
+}
+
+void Zwierze::zapisz(std::ostream& out) const {
+    out << nazwa() << " "
+        << polozenie.getX() << " "
+        << polozenie.getY() << " "
+        << sila << " "
+        << inicjatywa << " "
+        << wiek << std::endl;
 }

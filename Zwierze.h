@@ -9,4 +9,7 @@ public:
 
     virtual void akcja() override;
     virtual void kolizja(Organizm* inny) override;
+
+    virtual void zapisz(std::ostream& out) const override;
+
 };
