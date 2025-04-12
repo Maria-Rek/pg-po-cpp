@@ -24,14 +24,16 @@ int main() {
 
     Swiat swiat(10, 10);
 
-    
     std::cout << "Czy chcesz wczytać zapis gry z pliku? (t/n): ";
     char wybor;
     std::cin >> wybor;
     std::cin.ignore();
 
     if (wybor == 't' || wybor == 'T') {
-        swiat.wczytajStanZPliku("Zapis/save.txt");  //load
+        std::string nazwaPliku;
+        std::cout << "Podaj nazwę pliku do wczytania: ";
+        std::getline(std::cin, nazwaPliku);
+        swiat.wczytajStanZPliku("Zapis/" + nazwaPliku);
     }
     else {
         //Rośliny
@@ -56,7 +58,6 @@ int main() {
         swiat.dodajOrganizm(new Czlowiek(&swiat, Punkt(swiat.getSzerokosc() / 2, swiat.getWysokosc() / 2)));
     }
 
-    // Główna pętla
     while (true) {
         swiat.rysujSwiat();
 
@@ -68,10 +69,16 @@ int main() {
             swiat.wykonajTure();
         }
         else if (akcja == "z" || akcja == "Z") {
-            swiat.zapiszStanDoPliku("Zapis/save.txt");
+            std::string nazwaPliku;
+            std::cout << "Podaj nazwę pliku do zapisu: ";
+            std::getline(std::cin, nazwaPliku);
+            swiat.zapiszStanDoPliku("Zapis/" + nazwaPliku);
         }
         else if (akcja == "w" || akcja == "W") {
-            swiat.wczytajStanZPliku("Zapis/save.txt"); //load
+            std::string nazwaPliku;
+            std::cout << "Podaj nazwę pliku do wczytania: ";
+            std::getline(std::cin, nazwaPliku);
+            swiat.wczytajStanZPliku("Zapis/" + nazwaPliku);
         }
         else if (akcja == "q" || akcja == "Q") {
             std::cout << "Zamykam grę...\n";

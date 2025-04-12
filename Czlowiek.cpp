@@ -51,7 +51,7 @@ void Czlowiek::ustawSterowanie() {
     if (cooldown == 0) {
         char wybor;
         do {
-            std::cout << "[Człowiek] Czy chcesz użyć umiejętności specjalnej (całopalenie)? (t/n): ";
+            std::cout << "[Człowiek] Czy chcesz użyć umiejętności specjalnej? (t/n): ";
             std::cin >> wybor;
             wybor = std::tolower(wybor);
         } while (wybor != 't' && wybor != 'n');
