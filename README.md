@@ -45,8 +45,7 @@ Gracz może zapisać lub wczytać stan gry do pliku tekstowego.
 ✅ Symboliczna reprezentacja organizmów w ASCII/emoji  
 ✅ System zapisu i wczytywania stanu gry do pliku tekstowego  
 
-## Str
-uktura katalogów  
+## Struktura katalogów  
 - `Zwierzeta/` – pliki klas zwierząt  
 - `Rosliny/` – pliki klas roślin  
 - `Gra.*` – obsługa menu i rozgrywki  
