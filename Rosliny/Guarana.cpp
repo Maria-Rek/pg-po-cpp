@@ -2,6 +2,8 @@
 #include "Guarana.h"
 #include "../Swiat.h"
 
+// Guarana – zwiększa siłę organizmu, który ją zje o +3
+
 Guarana::Guarana(Swiat* swiat, Punkt polozenie)
     : Roslina(USE_EMOJI ? u8"🍒" : "G", swiat, polozenie, 0) {
 }

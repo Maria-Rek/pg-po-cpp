@@ -60,7 +60,7 @@ void Zwierze::kolizja(Organizm* inny) {
         return;
     }
 
-    //Jeśli inny to roślina – pozwól jej samej obsłużyć kolizję
+    //jeśli inny to roślina – pozwól jej samej obsłużyć kolizję
     if (dynamic_cast<Roslina*>(inny)) {
         inny->kolizja(this);
         return;

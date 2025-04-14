@@ -7,6 +7,8 @@
 #include <limits>
 #include <typeinfo>
 
+// CyberOwca – szuka najbliższego Barszczu Sosnowskiego i porusza się w jego stronę
+
 CyberOwca::CyberOwca(Swiat* swiat, Punkt polozenie)
     : Zwierze(USE_EMOJI ? u8"🤖" : "C", swiat, polozenie, 11, 4) {
 }

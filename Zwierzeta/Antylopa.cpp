@@ -4,6 +4,8 @@
 #include "../Roslina.h"
 #include <cstdlib>
 
+// Antylopa – porusza się o 2 pola i ma 50% szans na ucieczkę w kolizji
+
 Antylopa::Antylopa(Swiat* swiat, Punkt polozenie)
     : Zwierze(USE_EMOJI ? u8"🦌" : "A", swiat, polozenie, 4, 4) {
 }

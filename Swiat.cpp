@@ -215,7 +215,7 @@ void Swiat::wczytajStanZPliku(const std::string& nazwaPliku) {
         return;
     }
 
-    // Usuń stare organizmy
+    //usuń stare organizmy
     for (Organizm* o : organizmy)
         delete o;
     organizmy.clear();

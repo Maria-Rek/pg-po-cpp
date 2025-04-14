@@ -3,6 +3,8 @@
 #include "../Swiat.h"
 #include <cstdlib>
 
+// Żółw – ma 25% szansy na ruch, odbija ataki o sile <5
+
 Zolw::Zolw(Swiat* swiat, Punkt polozenie)
     : Zwierze(USE_EMOJI ? u8"🐢" : "Z", swiat, polozenie, 2, 1) {
 }

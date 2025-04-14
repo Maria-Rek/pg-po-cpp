@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <typeinfo>
 
+// Mlecz – w każdej turze podejmuje 3 próby rozsiania
+
 Mlecz::Mlecz(Swiat* swiat, Punkt polozenie)
     : Roslina(USE_EMOJI ? u8"🌼" : "M", swiat, polozenie, 0) {
 }

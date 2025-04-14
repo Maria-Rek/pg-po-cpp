@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <typeinfo>
 
+// Barszcz Sosnowskiego – zabija wszystkie zwierzęta w sąsiedztwie z wyjątkiem CyberOwcy
+
 BarszczSosnowskiego::BarszczSosnowskiego(Swiat* swiat, Punkt polozenie)
     : Roslina(USE_EMOJI ? u8"🧪" : "B", swiat, polozenie, 10) {
 }

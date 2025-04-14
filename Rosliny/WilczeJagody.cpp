@@ -2,6 +2,8 @@
 #include "WilczeJagody.h"
 #include "../Swiat.h"
 
+// Wilcze Jagody – zabijają każde zwierzę, które je zje
+
 WilczeJagody::WilczeJagody(Swiat* swiat, Punkt polozenie)
     : Roslina(USE_EMOJI ? u8"☠️" : "J", swiat, polozenie, 99) {
 }

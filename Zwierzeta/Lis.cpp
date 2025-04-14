@@ -3,6 +3,8 @@
 #include "../Swiat.h"
 #include <cstdlib>
 
+// Lis – porusza się tylko na pola, gdzie nie ma silniejszych organizmów
+
 Lis::Lis(Swiat* swiat, Punkt polozenie)
     : Zwierze(USE_EMOJI ? u8"🦊" : "L", swiat, polozenie, 3, 7) {
 }

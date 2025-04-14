@@ -6,7 +6,9 @@
 #include <cctype>
 #include <vector>
 #include <conio.h>
-#include <ostream>  // potrzebne dla zapisu
+#include <ostream>
+
+// Człowiek – sterowany przez gracza, posiada specjalną umiejętność "całopalenie"
 
 Czlowiek::Czlowiek(Swiat* swiat, Punkt polozenie)
     : Zwierze(USE_EMOJI ? u8"🚹" : "@", swiat, polozenie, 5, 4),
