@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Czlowiek.h" />
+    <ClInclude Include="Gra.h" />
     <ClInclude Include="Organizm.h" />
     <ClInclude Include="Punkt.h" />
     <ClInclude Include="Roslina.h" />
@@ -39,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Czlowiek.cpp" />
+    <ClCompile Include="Gra.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Organizm.cpp" />
     <ClCompile Include="Punkt.cpp" />
