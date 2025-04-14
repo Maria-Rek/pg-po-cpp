@@ -51,12 +51,15 @@ void Czlowiek::ustawSterowanie() {
     }
 
     if (cooldown == 0) {
-        char wybor;
-        do {
-            std::cout << "[Człowiek] Czy chcesz użyć umiejętności specjalnej? (t/n): ";
-            std::cin >> wybor;
-            wybor = std::tolower(wybor);
-        } while (wybor != 't' && wybor != 'n');
+        std::cout << "[Człowiek] Czy chcesz użyć umiejętności specjalnej? (t/n): ";
+        char wybor = '\0';
+        while (true) {
+            wybor = std::tolower(_getch());
+            if (wybor == 't' || wybor == 'n')
+                break;
+        }
+
+        std::cout << wybor << std::endl;
 
         if (wybor == 't') {
             specjalnaAktywna = true;
@@ -65,6 +68,8 @@ void Czlowiek::ustawSterowanie() {
         }
     }
 }
+
+
 
 void Czlowiek::akcja() {
     ustawSterowanie();

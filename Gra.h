@@ -9,6 +9,7 @@ public:
 private:
     Swiat swiat;
     bool graTrwa;
+    int maksTury; //-1 = brak limitu
 
     void start();
     void pokazOpcje();

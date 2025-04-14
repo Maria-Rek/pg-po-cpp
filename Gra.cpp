@@ -18,10 +18,11 @@
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
-
+#include <limits>
 
 Gra::Gra() {
     graTrwa = true;
+    maksTury = -1;  //brak limitu
     std::srand(static_cast<unsigned>(std::time(nullptr)));
 }
 
@@ -42,6 +43,15 @@ void Gra::menu() {
         if (wybor == "1") {
             swiat = Swiat(10, 10);
             dodajOrganizmyStartowe();
+
+            std::cout << "Podaj liczbę tur do wykonania: ";
+            while (!(std::cin >> maksTury) || maksTury <= 0) {
+                std::cout << "❌ Niepoprawna liczba. Podaj liczbę > 0: ";
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
+            std::cin.ignore();
+
             break;
         }
         else if (wybor == "2") {
@@ -59,7 +69,6 @@ void Gra::menu() {
 
     start();
 }
-
 
 void Gra::start() {
     while (graTrwa) {
@@ -90,6 +99,12 @@ void Gra::start() {
             else {
                 std::cout << "\033[F\033[K";
             }
+        }
+
+        if (maksTury > 0 && swiat.getTura() > maksTury) {
+            std::cout << "\n[!] Osiągnięto " << maksTury << " tur. Gra zakończona.\n";
+            graTrwa = false;
+            return;
         }
     }
 }
@@ -123,10 +138,10 @@ void Gra::wczytajDialog() {
 
         swiat = Swiat(10, 10);
         swiat.wczytajStanZPliku("Zapis/" + nazwa);
+        maksTury = -1; //brak limitu po wczytaniu
         break;
     }
 }
-
 
 void Gra::dodajOrganizmyStartowe() {
     swiat.dodajOrganizm(new Trawa(&swiat, Punkt(1, 1)));
