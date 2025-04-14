@@ -22,7 +22,7 @@
 
 Gra::Gra() {
     graTrwa = true;
-    maksTury = -1;  //brak limitu
+    maksTury = -1;  // brak limitu
     std::srand(static_cast<unsigned>(std::time(nullptr)));
 }
 
@@ -51,7 +51,6 @@ void Gra::menu() {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             }
             std::cin.ignore();
-
             break;
         }
         else if (wybor == "2") {
@@ -138,7 +137,17 @@ void Gra::wczytajDialog() {
 
         swiat = Swiat(10, 10);
         swiat.wczytajStanZPliku("Zapis/" + nazwa);
-        maksTury = -1; //brak limitu po wczytaniu
+
+        int dodatkoweTury;
+        std::cout << "Podaj liczbę tur do wykonania od momentu wczytania: ";
+        while (!(std::cin >> dodatkoweTury) || dodatkoweTury <= 0) {
+            std::cout << "❌ Niepoprawna liczba. Podaj liczbę > 0: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        std::cin.ignore();
+
+        maksTury = swiat.getTura() + dodatkoweTury;
         break;
     }
 }
