@@ -2,20 +2,20 @@
 Object Oriented Programming Project C++  
 PO – Politechnika Gdańska, Informatyka  
 
-
 ## Opis projektu
-Projekt to konsolowy symulator świata 2D, w którym różne organizmy żyją, poruszają się, walczą ze sobą albo się rozmnażają.
+Projekt to konsolowy symulator świata 2D, w którym różne organizmy żyją, poruszają się, walczą ze sobą albo się rozmnażają.  
 Każdy organizm działa na własnych zasadach – jedne poruszają się losowo, inne podejmują decyzje zależnie od otoczenia.
 
-Głównym elementem gry jest Człowiek, którym steruje gracz za pomocą strzałek.
-Dodatkowo posiada specjalną umiejętność – **całopalenie**, która pozwala mu spalić wszystko dookoła (cooldown 5 tur).
+Głównym elementem gry jest **Człowiek**, którym steruje gracz za pomocą strzałek.  
+Dodatkowo posiada specjalną umiejętność – **całopalenie**, która przez 5 tur spala wszystkie organizmy wokół, a następnie przez 5 tur trwa cooldown.
 
 W grze pojawia się też specjalny organizm – **CyberOwca**, który ma za zadanie odnaleźć i zniszczyć niebezpieczną roślinę: **Barszcz Sosnowskiego**.
 
-Gra działa turowo – organizmy wykonują swoje ruchy w kolejności zależnej od inicjatywy i wieku.
-Każda tura kończy się wizualizacją planszy oraz wypisaniem wydarzeń w konsoli.
+Gra działa turowo – organizmy wykonują swoje ruchy w kolejności zależnej od inicjatywy i wieku.  
+Każda tura kończy się wizualizacją planszy oraz wypisaniem wydarzeń w konsoli.  
 Gracz może zapisać lub wczytać stan gry do pliku tekstowego.
 
+---
 
 ## Wymagania i funkcjonalności  
 ✅ Implementacja klasy `Swiat` oraz abstrakcyjnej klasy `Organizm`  
@@ -35,15 +35,20 @@ Gracz może zapisać lub wczytać stan gry do pliku tekstowego.
 - Wilcze Jagody (trujące)  
 - Barszcz Sosnowskiego (zabija wszystko wokół oprócz CyberOwcy)
 
-✅ Człowiek:  
-- Porusza się strzałkami  
-- Umiejętność specjalna: **całopalenie** (spala wszystkie organizmy wokół przez 1 turę, cooldown 5 tur)
+✅ **Człowiek**:
+- Porusza się strzałkami (←↑↓→)  
+- Umiejętność specjalna: całopalenie
+  - działa przez 5 tur aktywności
+  - po dezaktywacji – 5 tur cooldownu
+  - umiejętność można aktywować tylko, gdy nie jest aktywna ani w cooldownie
 
 ✅ Obsługa kolizji i rozmnażania organizmów tego samego gatunku  
 ✅ Priorytet wykonania tury wg inicjatywy i wieku  
 ✅ Ośmiosąsiedztwo przy poruszaniu i rozmnażaniu  
 ✅ Symboliczna reprezentacja organizmów w ASCII/emoji  
 ✅ System zapisu i wczytywania stanu gry do pliku tekstowego  
+
+---
 
 ## Struktura katalogów  
 - `Zwierzeta/` – pliki klas zwierząt  
