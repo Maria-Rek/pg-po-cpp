@@ -8,11 +8,9 @@
 #include <conio.h>
 #include <ostream>
 
-// Człowiek – sterowany przez gracza, posiada specjalną umiejętność "całopalenie"
-
 Czlowiek::Czlowiek(Swiat* swiat, Punkt polozenie)
     : Zwierze(USE_EMOJI ? u8"🚹" : "@", swiat, polozenie, 5, 4),
-    specjalnaAktywna(false), cooldown(0), kierunekRuchu(' ') {
+    specjalnaAktywna(false), turyAktywne(0), turyCooldown(0), kierunekRuchu(' ') {
 }
 
 std::string Czlowiek::nazwa() const {
@@ -20,11 +18,13 @@ std::string Czlowiek::nazwa() const {
 }
 
 int Czlowiek::getCooldown() const {
-    return cooldown;
+    return turyCooldown;
 }
 
-void Czlowiek::setCooldown(int cooldown) {
-    this->cooldown = cooldown;
+void Czlowiek::setCooldown(int aktywne, int cooldown) {
+    this->turyAktywne = aktywne;
+    this->turyCooldown = cooldown;
+    this->specjalnaAktywna = aktywne > 0;
 }
 
 void Czlowiek::ustawSterowanie() {
@@ -50,7 +50,7 @@ void Czlowiek::ustawSterowanie() {
         return;
     }
 
-    if (cooldown == 0) {
+    if (turyAktywne == 0 && turyCooldown == 0) {
         std::cout << "[Człowiek] Czy chcesz użyć umiejętności specjalnej? (t/n): ";
         char wybor = '\0';
         while (true) {
@@ -63,13 +63,12 @@ void Czlowiek::ustawSterowanie() {
 
         if (wybor == 't') {
             specjalnaAktywna = true;
-            cooldown = 5;
+            turyAktywne = 5;
+            turyCooldown = 0; // zacznie się po tych 5
             swiat->dodajLog("Człowiek użył umiejętności: całopalenie 🔥");
         }
     }
 }
-
-
 
 void Czlowiek::akcja() {
     ustawSterowanie();
@@ -83,7 +82,16 @@ void Czlowiek::akcja() {
                 swiat->usunOrganizm(o);
             }
         }
-        specjalnaAktywna = false;
+
+        turyAktywne--;
+        if (turyAktywne == 0) {
+            specjalnaAktywna = false;
+            turyCooldown = 5;
+            swiat->dodajLog("Umiejętność Człowieka wygasła. Rozpoczęto 5-tur cooldown.");
+        }
+    }
+    else if (turyCooldown > 0) {
+        turyCooldown--;
     }
 
     int dx = 0, dy = 0;
@@ -107,12 +115,8 @@ void Czlowiek::akcja() {
             polozenie = nowaPozycja;
     }
 
-    if (cooldown > 0)
-        cooldown--;
-
     zwiekszWiek();
 }
-
 
 void Czlowiek::zapisz(std::ostream& out) const {
     out << nazwa() << " "
@@ -121,5 +125,6 @@ void Czlowiek::zapisz(std::ostream& out) const {
         << sila << " "
         << inicjatywa << " "
         << wiek << " "
-        << cooldown << std::endl;
+        << turyAktywne << " "
+        << turyCooldown << std::endl;
 }

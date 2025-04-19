@@ -72,19 +72,10 @@ void Zwierze::kolizja(Organizm* inny) {
     int silaB = inny->getSila();
 
     if (silaA == silaB) {
-        if (getWiek() > inny->getWiek()) {
-            Punkt jegoPozycja = inny->getPolozenie();
-            swiat->dodajLog(nazwaB + " został zabity przez " + nazwaA + " (starszy organizm wygrał)");
-            polozenie = jegoPozycja;
-            swiat->usunOrganizm(inny);
-        }
-        else if (getWiek() < inny->getWiek()) {
-            swiat->dodajLog(nazwaA + " został zabity przez " + nazwaB + " (starszy organizm wygrał)");
-            swiat->usunOrganizm(this);
-        }
-        else {
-            swiat->dodajLog(nazwaA + " i " + nazwaB + " mają tą samą siłę i wiek – żaden nie zyskał przewagi");
-        }
+        Punkt jegoPozycja = inny->getPolozenie();
+        swiat->dodajLog(nazwaB + " został zabity przez " + nazwaA + " (atakujący miał pierwszeństwo przy równej sile)");
+        polozenie = jegoPozycja;
+        swiat->usunOrganizm(inny);
         return;
     }
 

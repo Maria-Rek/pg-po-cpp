@@ -6,7 +6,8 @@
 class Czlowiek : public Zwierze {
 private:
     bool specjalnaAktywna;
-    int cooldown;
+    int turyAktywne;
+    int turyCooldown;
     char kierunekRuchu;
 
 public:
@@ -20,5 +21,5 @@ public:
     void ustawSterowanie();
 
     int getCooldown() const;
-    void setCooldown(int cooldown);
+    void setCooldown(int turyAktywne, int turyCooldown);
 };

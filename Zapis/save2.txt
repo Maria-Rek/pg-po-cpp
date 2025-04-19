@@ -4,7 +4,7 @@ Lis 3 2 3 7 3
 Owca 0 3 4 4 3
 Antylopa 5 5 4 4 3
 CyberOwca 3 6 11 4 3
-Czlowiek 5 8 5 4 3 2
+Czlowiek 5 8 5 4 3 1 2
 Trawa 1 1 0 0 3
 Trawa 8 2 0 0 3
 Mlecz 5 5 0 0 3

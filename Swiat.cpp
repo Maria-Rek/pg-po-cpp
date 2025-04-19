@@ -207,7 +207,6 @@ void Swiat::zapiszStanDoPliku(const std::string& nazwaPliku) {
     std::cout << "[Zapisano stan gry do pliku: " << nazwaPliku << "]" << std::endl;
 }
 
-
 void Swiat::wczytajStanZPliku(const std::string& nazwaPliku) {
     std::ifstream in(nazwaPliku);
     if (!in.is_open()) {
@@ -249,11 +248,16 @@ void Swiat::wczytajStanZPliku(const std::string& nazwaPliku) {
             else if (nazwa == "BarszczSosnowskiego") nowy = new BarszczSosnowskiego(this, Punkt(x, y));
             else if (nazwa == "CyberOwca") nowy = new CyberOwca(this, Punkt(x, y));
             else if (nazwa == "Czlowiek") {
-                int cooldown;
-                iss >> cooldown;
+                int aktywne, cooldown;
+                iss >> aktywne >> cooldown;
                 Czlowiek* cz = new Czlowiek(this, Punkt(x, y));
-                cz->setCooldown(cooldown);
-                nowy = cz;
+                cz->setSila(sila);
+                cz->zwiekszWiek();
+                for (int i = 1; i < wiek; ++i)
+                    cz->zwiekszWiek();
+                cz->setCooldown(aktywne, cooldown);
+                organizmy.push_back(cz);
+                continue;
             }
 
             if (nowy) {

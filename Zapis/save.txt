@@ -2,7 +2,7 @@ TURA 7
 ROZMIAR 10 10
 Lis 3 2 3 7 5
 Wilk 7 2 9 5 6
-Czlowiek 6 6 5 4 6 1
+Czlowiek 6 6 5 4 6 0 5
 Owca 5 2 4 4 6
 Antylopa 3 9 4 4 5
 Antylopa 2 0 4 4 5
