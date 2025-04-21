@@ -57,7 +57,9 @@ void Swiat::rysujSwiat() {
         }
     }
 
-    std::cout << "\n--- Tura: " << tura << " ---\n";
+
+    std::cout << "\nAutor: Maria Rek (203174)\n";
+    std::cout << "--- Tura: " << tura << " ---\n";
     for (int y = 0; y < wysokosc; ++y) {
         for (int x = 0; x < szerokosc; ++x) {
             std::cout << plansza[y][x] << ' ';

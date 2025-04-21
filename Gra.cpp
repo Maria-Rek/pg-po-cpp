@@ -29,7 +29,8 @@ Gra::Gra() {
 void Gra::menu() {
     std::string wybor;
 
-    std::cout << "\n=============================\n";
+    std::cout << "\nAutor: Maria Rek (203174)\n";
+    std::cout << "============================\n";
     std::cout << "\t   MENU \n";
     std::cout << "=============================\n\n";
     std::cout << "1 – Nowa gra\n";
