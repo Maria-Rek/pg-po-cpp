@@ -136,5 +136,8 @@
     <Text Include="Zapis\save2.txt">
       <Filter>Pliki zasobów</Filter>
     </Text>
+    <Text Include="Zapis\save3.txt">
+      <Filter>Pliki zasobów</Filter>
+    </Text>
   </ItemGroup>
 </Project>

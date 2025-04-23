@@ -21,7 +21,7 @@ private:
     void sortujOrganizmy();
 
 public:
-    Swiat(int szerokosc = 20, int wysokosc = 20);
+    Swiat(int szerokosc = 10, int wysokosc = 10);
     ~Swiat();
 
     void wykonajTure();

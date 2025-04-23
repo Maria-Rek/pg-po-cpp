@@ -1,0 +1,13 @@
+TURA 3
+ROZMIAR 10 10
+Lis 0 2 3 7 2
+Owca 2 6 4 4 2
+Antylopa 7 7 4 4 2
+CyberOwca 2 7 11 4 2
+Czlowiek 6 6 5 4 2 3 0
+Zolw 3 6 2 1 2
+Trawa 1 1 0 0 2
+Trawa 8 2 0 0 2
+Guarana 3 4 0 0 2
+Wilcze Jagody 2 8 99 0 2
+Barszcz Sosnowskiego 6 2 10 0 2
