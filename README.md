@@ -1,59 +1,54 @@
-# Programowanie Obiektowe  
-Object Oriented Programming Project C++  
-PO – Politechnika Gdańska, Informatyka  
+# Object-Oriented Programming (C++)
 
-## Opis projektu
-Projekt to konsolowy symulator świata 2D, w którym różne organizmy żyją, poruszają się, walczą ze sobą albo się rozmnażają.  
-Każdy organizm działa na własnych zasadach – jedne poruszają się losowo, inne podejmują decyzje zależnie od otoczenia.
+## Project Overview
 
-Głównym elementem gry jest **Człowiek**, którym steruje gracz za pomocą strzałek.  
-Dodatkowo posiada specjalną umiejętność – **całopalenie**, która przez 5 tur spala wszystkie organizmy wokół, a następnie przez 5 tur trwa cooldown.
+Console-based 2D world simulator where various organisms live, move, fight, or reproduce according to individual rules.
 
-W grze pojawia się też specjalny organizm – **CyberOwca**, który ma za zadanie odnaleźć i zniszczyć niebezpieczną roślinę: **Barszcz Sosnowskiego**.
-
-Gra działa turowo – organizmy wykonują swoje ruchy w kolejności zależnej od inicjatywy i wieku.  
-Każda tura kończy się wizualizacją planszy oraz wypisaniem wydarzeń w konsoli.  
-Gracz może zapisać lub wczytać stan gry do pliku tekstowego.
+The game is **turn-based**, with organisms acting based on initiative and age, displaying the board and event log in the console after each turn.  
+Game state can be saved/loaded from a text file.
 
 ---
 
-## Wymagania i funkcjonalności  
-✅ Implementacja klasy `Swiat` oraz abstrakcyjnej klasy `Organizm`  
-✅ Klasy pochodne `Zwierze`, `Roslina` z polimorfizmem i hermetyzacją  
-✅ Implementacja 6 zwierząt:
-- Wilk  
-- Owca  
-- Lis (unika silniejszych)  
-- Żółw (25% szansy na ruch, odpiera ataki <5)  
-- Antylopa (zasięg 2, 50% ucieczki)  
-- CyberOwca (śledzi Barszcz Sosnowskiego)
+## Features
 
-✅ Implementacja 5 roślin:
-- Trawa  
-- Mlecz (3 próby rozsiania)  
-- Guarana (zwiększa siłę o +3)  
-- Wilcze Jagody (trujące)  
-- Barszcz Sosnowskiego (zabija wszystko wokół oprócz CyberOwcy)
-
-✅ **Człowiek**:
-- Porusza się strzałkami (←↑↓→)  
-- Umiejętność specjalna: całopalenie
-  - działa przez 5 tur aktywności
-  - po dezaktywacji – 5 tur cooldownu
-  - umiejętność można aktywować tylko, gdy nie jest aktywna ani w cooldownie
-
-✅ Obsługa kolizji i rozmnażania organizmów tego samego gatunku  
-✅ Priorytet wykonania tury wg inicjatywy i wieku  
-✅ Ośmiosąsiedztwo przy poruszaniu i rozmnażaniu  
-✅ Symboliczna reprezentacja organizmów w ASCII/emoji  
-✅ System zapisu i wczytywania stanu gry do pliku tekstowego  
+- `Swiat` class and abstract `Organism` class
+- Derived `Animal` and `Plant` classes with polymorphism and encapsulation
+- 6 animals:
+  - Wolf
+  - Sheep
+  - Fox (avoids stronger organisms)
+  - Turtle (25% move chance, blocks attacks <5)
+  - Antelope (range 2, 50% escape chance)
+  - CyberSheep (hunts Hogweed)
+- 5 plants:
+  - Grass
+  - Dandelion (3 spread attempts)
+  - Guarana (+3 strength)
+  - Deadly Nightshade (poisonous)
+  - Hogweed (kills surrounding organisms except CyberSheep)
+- **Human**:
+  - Controlled with ←↑↓→
+  - Special ability “Firestorm”:
+    - 5 turns active
+    - 5 turns cooldown
+    - Can be activated only when not active or on cooldown
+- Collision handling and reproduction of same-species organisms
+- Turn priority based on initiative and age
+- 8-neighborhood movement and reproduction
+- ASCII/emoji symbolic representation of organisms
+- Save/load system using text files
 
 ---
 
-## Struktura katalogów  
-- `Zwierzeta/` – pliki klas zwierząt  
-- `Rosliny/` – pliki klas roślin  
-- `Gra.*` – obsługa menu i rozgrywki  
-- `Swiat.*` – zarządzanie planszą i logiką gry  
-- `Organizm.*` – bazowa klasa organizmu  
-- `Zapis/` – domyślny folder zapisu plików stanu gry  
+## Directory Structure
+
+- `Zwierzeta/` – animal classes
+- `Rosliny/` – plant classes
+- `Gra.*` – menu and gameplay
+- `Swiat.*` – board management and game logic
+- `Organizm.*` – base organism class
+- `Zapis/` – save files
+
+---
+
+Project for the *Object-Oriented Programming* course (2024/2025) at Gdańsk University of Technology.
