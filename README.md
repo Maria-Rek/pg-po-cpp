@@ -31,7 +31,6 @@ Game state can be saved/loaded from a text file.
   - Special ability “Firestorm”:
     - 5 turns active
     - 5 turns cooldown
-    - Can be activated only when not active or on cooldown
 - Collision handling and reproduction of same-species organisms
 - Turn priority based on initiative and age
 - 8-neighborhood movement and reproduction
